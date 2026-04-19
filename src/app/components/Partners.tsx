@@ -1,8 +1,36 @@
 import { motion } from "motion/react";
-import { Award } from "lucide-react";
+import { Award, ChevronLeft, ChevronRight } from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState, useEffect } from "react";
+
+// Custom Arrow Components
+const PrevArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <button
+      onClick={onClick}
+      className="absolute left-[-15px] md:left-[-45px] top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white border border-emerald-100 rounded-full shadow-md hover:bg-emerald-50 hover:border-emerald-300 text-emerald-600 transition-all duration-300"
+      aria-label="Previous Slide"
+    >
+      <ChevronLeft size={24} />
+    </button>
+  );
+};
+
+const NextArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <button
+      onClick={onClick}
+      className="absolute right-[-15px] md:right-[-45px] top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-white border border-emerald-100 rounded-full shadow-md hover:bg-emerald-50 hover:border-emerald-300 text-emerald-600 transition-all duration-300"
+      aria-label="Next Slide"
+    >
+      <ChevronRight size={24} />
+    </button>
+  );
+};
 
 const partners = [
   {
@@ -30,12 +58,12 @@ const partners = [
     logo: "https://www.zoho.com/sites/zweb/images/ogimage/zoho-logo.png",
     category: "Business Software",
   },
-    {
+  {
     name: "digitalocean",
     logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/250px-DigitalOcean_logo.svg.png",
     category: "cloud hosting",
   },
-    {
+  {
     name: "hostinger",
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Hostinger_Logotype.png",
     category: "web hosting",
@@ -43,50 +71,46 @@ const partners = [
 ];
 
 export function Partners() {
-const settings = {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 800,
-    slidesToShow: 6, // Desktop par 6 cards dikhenge
+    slidesToShow: 4, // Default (Desktop)
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2500,
     pauseOnHover: true,
+    arrows: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     cssEase: "linear",
     responsive: [
       {
-        breakpoint: 1280, // Large screens
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 1024, // Tablets / Small Laptops
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768, // Mobile Landscape
+        breakpoint: 1024, // Tablets
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480, // Mobile Portrait
+        breakpoint: 640, // Mobile
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-white border-y border-gray-100">
+    <section className="py-12 md:py-16 lg:py-20 bg-white border-y border-gray-100 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -110,16 +134,20 @@ const settings = {
           </p>
         </motion.div>
 
-        {/* Partner Logos Slider */}
+        {/* Partner Logos Slider Wrapper */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-6xl mx-auto partners-slider"
+          className="max-w-6xl mx-auto partners-slider relative px-8 md:px-12
+            [&_.slick-dots]:bottom-[-45px] md:[&_.slick-dots]:bottom-[-55px]
+            [&_.slick-dots_li_button:before]:text-[10px] [&_.slick-dots_li_button:before]:text-emerald-500
+            [&_.slick-dots_li.slick-active_button:before]:text-teal-500"
         >
-          <Slider {...settings}>
-            {partners.map((partner) => (
+          {mounted ? (
+            <Slider key={mounted ? "slider-on" : "slider-off"} {...settings}>
+              {partners.map((partner) => (
               <div key={partner.name} className="px-2 md:px-3">
                 <div className="bg-gradient-to-br from-slate-50 to-white rounded-xl md:rounded-2xl p-5 md:p-8 border-2 border-gray-100 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center h-36 md:h-48">
                   <div className="w-full h-16 md:h-20 flex items-center justify-center mb-3 md:mb-4">
@@ -128,7 +156,6 @@ const settings = {
                       alt={partner.name}
                       className="max-w-full max-h-full object-contain"
                       onError={(e) => {
-                        // Fallback to text if image fails to load
                         e.currentTarget.style.display = 'none';
                         const textFallback = document.createElement('div');
                         textFallback.className = 'font-bold text-gray-700 text-center text-sm md:text-base';
@@ -144,61 +171,15 @@ const settings = {
               </div>
             ))}
           </Slider>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-36 md:h-48 bg-gray-50 animate-pulse rounded-2xl border-2 border-gray-100"></div>
+              ))}
+            </div>
+          )}
         </motion.div>
       </div>
-
-      <style>{`
-        .partners-slider .slick-dots {
-          bottom: -45px;
-        }
-        
-        .partners-slider .slick-dots li button:before {
-          font-size: 10px;
-          color: #10b981;
-        }
-        
-        .partners-slider .slick-dots li.slick-active button:before {
-          color: #14b8a6;
-        }
-
-        .partners-slider .slick-prev,
-        .partners-slider .slick-next {
-          z-index: 1;
-        }
-
-        .partners-slider .slick-prev {
-          left: -35px;
-        }
-
-        .partners-slider .slick-next {
-          right: -35px;
-        }
-
-        .partners-slider .slick-prev:before,
-        .partners-slider .slick-next:before {
-          color: #10b981;
-          font-size: 30px;
-        }
-
-        @media (max-width: 768px) {
-          .partners-slider .slick-prev {
-            left: -15px;
-          }
-
-          .partners-slider .slick-next {
-            right: -15px;
-          }
-
-          .partners-slider .slick-prev:before,
-          .partners-slider .slick-next:before {
-            font-size: 24px;
-          }
-
-          .partners-slider .slick-dots {
-            bottom: -35px;
-          }
-        }
-      `}</style>
     </section>
   );
 }

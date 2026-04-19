@@ -110,83 +110,88 @@ export function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^[0-9]{10}$/;
-
-  if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
-    Swal.fire({
-      title: "Invalid Phone Number",
-      text: "Please enter a valid 10-digit mobile number.",
-      icon: "error",
-      confirmButtonColor: "#ef4444",
-    });
-    setIsSubmitting(false);
-    return;
-  }
-  
-  // API Payload Mapping
-  const payload = {
-    fullName: formData.name,
-    email: formData.email,
-    phone: formData.phone,
-    companyName: formData.company,
-    serviceInterestedIn: formData.service,
-    projectDetails: formData.message,
-  };
-
-  try {
-    const response = await fetch("http://192.168.0.112:4000/api/v1/submitfrom", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const result = await response.json();
-
-    if (response.ok && result.success) {
-      // SweetAlert Success Message
-      Swal.fire({
-        title: "Success!",
-        text: "Your message has been received by HiveRift. We will get back to you shortly.",
-        icon: "success",
-        confirmButtonColor: "#10b981", // Emerald-500
-        timer: 3000,
-        timerProgressBar: true,
-      });
-
-      // Clear Form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        message: "",
-      });
-    } else {
-      // Backend Error Alert
-// Backend Error Alert
-  Swal.fire({
-    title: "Submission Failed",
-    text: result.message || "Something went wrong. Please try again.",
-    icon: "error",
-    confirmButtonColor: "#ef4444",
-  });
+    
+    // Comprehensive Validation
+    if (!formData.name.trim()) {
+      Swal.fire({ icon: 'error', title: 'Name Required', text: 'Please enter your full name.', confirmButtonColor: "#10b981" });
+      setIsSubmitting(false);
+      return;
     }
-  } catch (error) {
-    // Network Error Alert
-    Swal.fire({
-      title: "Connection Failed",
-      text: "server unavailable. Please try again.",
-      icon: "warning",
-      confirmButtonColor: "#f59e0b",
-    });
-    console.error("Submission error:", error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
+      Swal.fire({ icon: 'error', title: 'Invalid Email', text: 'Please enter a valid email address.', confirmButtonColor: "#10b981" });
+      setIsSubmitting(false);
+      return;
+    }
+    if (!formData.phone.trim() || !phoneRegex.test(formData.phone.trim())) {
+      Swal.fire({ icon: 'error', title: 'Invalid Phone', text: 'Please enter a valid 10-digit phone number.', confirmButtonColor: "#10b981" });
+      setIsSubmitting(false);
+      return;
+    }
+    if (!formData.service) {
+      Swal.fire({ icon: 'error', title: 'Service Required', text: 'Please select a service.', confirmButtonColor: "#10b981" });
+      setIsSubmitting(false);
+      return;
+    }
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      Swal.fire({ icon: 'error', title: 'Details Required', text: 'Please provide at least 10 characters for project details.', confirmButtonColor: "#10b981" });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Use FormData for typical PHP compatibility
+      const data = new FormData();
+      data.append("name", formData.name.trim());
+      data.append("email", formData.email.trim());
+      data.append("phone", formData.phone.trim());
+      data.append("company", formData.company.trim());
+      data.append("service", formData.service);
+      data.append("message", formData.message.trim());
+
+      const response = await fetch("https://hiverift.com/api/sendmail.php", {
+        method: "POST",
+        body: data,
+      });
+
+      const result = await response.json().catch(() => ({ status: false, message: "Response was not in JSON format." }));
+
+      // Handle both status: true and result.success
+      if (response.ok && (result.status === true || result.status === "success" || result.success === true)) {
+        Swal.fire({
+          title: "Message Sent!",
+          text: "Thank you for reaching out. We have received your message and will get back to you shortly.",
+          icon: "success",
+          confirmButtonColor: "#10b981",
+          timer: 5000,
+          timerProgressBar: true,
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        throw new Error(result.message || "Server Error: Could not send message.");
+      }
+    } catch (error: any) {
+      Swal.fire({
+        title: "Submission Failed",
+        text: error.message || "Could not connect to the server. Please try again later.",
+        icon: "error",
+        confirmButtonColor: "#ef4444",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -297,7 +302,7 @@ Tell us, we Build            </h2>
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all shadow-sm"
                           placeholder="Enter your full name"
                         />
                       </div>
@@ -312,7 +317,7 @@ Tell us, we Build            </h2>
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all shadow-sm"
                           placeholder="john@company.com"
                         />
                       </div>
@@ -329,14 +334,13 @@ Tell us, we Build            </h2>
   name="phone"
   value={formData.phone}
   onChange={(e) => {
-    // Sirf numbers allow karne ke liye
     const value = e.target.value.replace(/\D/g, "");
-    if (value.length <= 10) { // 10 digit se zyada nahi
+    if (value.length <= 10) {
       setFormData({ ...formData, phone: value });
     }
   }}
   required
-  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
+  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all shadow-sm"
   placeholder="9876543210"
 />
                       </div>
@@ -350,7 +354,7 @@ Tell us, we Build            </h2>
                           name="company"
                           value={formData.company}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all shadow-sm"
                           placeholder="Your Company"
                         />
                       </div>
@@ -366,7 +370,7 @@ Tell us, we Build            </h2>
                         value={formData.service}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition-colors bg-white"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all bg-white shadow-sm"
                       >
                         <option value="">Select a service</option>
                         <option value="Web Development">Web Development</option>
@@ -381,9 +385,12 @@ Tell us, we Build            </h2>
                       </select>
                     </div>
 
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                        Project Details *
+                    <div className="relative">
+                      <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2 flex justify-between">
+                        <span>Project Details *</span>
+                        <span className={`text-xs ${formData.message.length >= 10 ? 'text-emerald-600' : 'text-gray-400'}`}>
+                          {formData.message.length} characters
+                        </span>
                       </label>
                       <textarea
                         id="message"
@@ -392,8 +399,8 @@ Tell us, we Build            </h2>
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-0 outline-none transition-colors resize-none"
-                        placeholder="Tell us about your project..."
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all resize-none shadow-sm"
+                        placeholder="Tell us about your project... (min 10 characters)"
                       />
                     </div>
 

@@ -127,15 +127,16 @@ export function Footer() {
   {/* 2. Social Pills */}
   <div className="flex flex-wrap justify-center gap-3">
     {[
-      { name: "Linkedin" },
-      { name: "X" },
-      { name: "Meta" },
-      { name: "Instagram" },
-      { name: "Youtube" },
+      { name: "LinkedIn", url: "https://www.linkedin.com/company/hiverift-softwares" },
+      { name: "Facebook", url: "https://www.facebook.com/profile.php?id=61576054306888" },
+      { name: "Instagram", url: "https://www.instagram.com/hiverift.global/" },
+
     ].map((social, i) => (
       <a
         key={i}
-        href="#"
+        href={social.url}
+        target="_blank"
+        rel="noopener noreferrer"
         className="px-5 py-2 rounded-full border border-gray-800
         text-sm text-gray-400 hover:border-emerald-500
         hover:text-white hover:bg-emerald-500/10

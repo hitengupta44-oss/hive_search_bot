@@ -1,7 +1,7 @@
 
 import { motion } from "motion/react";
-import { 
-  ArrowRight, 
+import {
+  ArrowRight,
   CheckCircle2,
   TrendingUp,
   Users,
@@ -32,7 +32,7 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-screen py-12 sm:py-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-screen pt-28 pb-12 sm:pt-32 sm:pb-16 lg:py-24">
           {/* Left Side - Content (Order 2 on mobile, Order 1 on desktop) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -106,16 +106,16 @@ export function Hero() {
               className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2 sm:pt-4"
             >
               {/* Primary CTA */}
-    <Button
-  asChild // Ye important hai taaki Button Link ki tarah behave kare
-  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-6 py-5 sm:px-8 sm:py-6 text-base sm:text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 group w-full sm:w-auto"
->
-  <Link to="/contact"> {/* Ab ye har page se contact par bhej dega */}
-    <Phone className="mr-2" size={18} />
-    Get Free Consultation
-    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-  </Link>
-</Button>
+              <Button
+                asChild // Ye important hai taaki Button Link ki tarah behave kare
+                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-6 py-5 sm:px-8 sm:py-6 text-base sm:text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 group w-full sm:w-auto"
+              >
+                <Link to="/contact"> {/* Ab ye har page se contact par bhej dega */}
+                  <Phone className="mr-2" size={18} />
+                  Get Free Consultation
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                </Link>
+              </Button>
 
               {/* Secondary CTA */}
               <Link to="/case-studies" className="w-full sm:w-auto">
@@ -184,7 +184,7 @@ export function Hero() {
                   alt="Team Collaboration"
                   className="w-full h-full object-cover"
                 />
-                
+
                 {/* Top Rated Badge */}
                 <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-white rounded-full shadow-lg px-2.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-1.5 sm:gap-2">
                   <Award className="text-amber-500" size={14} />
@@ -226,14 +226,14 @@ export function Hero() {
 
                 {/* Right: Circular Badge */}
                 <div className="flex-shrink-0">
-                  <motion.div 
+                  <motion.div
                     className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-44 lg:h-44"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
                     {/* White Circle Background */}
                     <div className="absolute inset-0 bg-white rounded-full shadow-2xl"></div>
-                    
+
                     {/* Inner Content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <div className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">98%</div>
