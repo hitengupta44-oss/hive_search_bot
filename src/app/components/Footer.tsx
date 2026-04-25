@@ -60,12 +60,12 @@ export function Footer() {
               Company
             </h4>
             <ul className="space-y-2.5">
-              {[
-                { name: "Industries", path: "/industries" },
+               {[
+                { name: "Pricing Plans", path: "/pricing" },
+                { name: "Join Our Team", path: "/careers" },
+                { name: "Insights & Blog", path: "/blog" },
                 { name: "Our Methodology", path: "/solutions" },
-                { name: "Company Overview", path: "/about" },
-                { name: "Resources", path: "/about" },
-                { name: "Guide to Digital PR", path: "/solutions" }
+                { name: "Industries", path: "/industries" }
               ].map((link) => (
                 <li key={link.name}>
                   <Link to={link.path} className="hover:text-emerald-400 transition-colors flex items-center gap-2 text-[13px]">
@@ -117,9 +117,14 @@ export function Footer() {
       alt="HiveRift"
       className="h-10 w-auto mb-2"
     />
-    <p className="text-xs text-gray-500 leading-snug">
-      © 2026 HiveRift. Global Software Engineering Agency.
-      Delivering Innovation Everywhere.
+    <div className="mt-2 flex flex-wrap gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
+      <Link to="/terms" className="hover:text-emerald-500 transition-colors">Terms of Service</Link>
+      <span className="text-gray-800">•</span>
+      <Link to="/privacy" className="hover:text-emerald-500 transition-colors">Privacy Policy</Link>
+    </div>
+    <p className="text-[10px] text-gray-600 leading-snug mt-4">
+      © 2026 HiveRift. Global Software Engineering Agency. <br />
+      Operated by KhatuShyam Technologies. New Delhi.
     </p>
   </div>
 

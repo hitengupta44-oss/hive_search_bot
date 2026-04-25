@@ -1,366 +1,193 @@
-import { motion } from "motion/react";
-import { Star } from "lucide-react";
+import { motion, useMotionValue } from "motion/react";
+import { Star, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const testimonials = [
-  // Web Development Clients
   {
     name: "Rajesh Kumar",
     position: "CEO",
+    location: "Mumbai",
     rating: 5,
-    text: "HiveRift delivered an exceptional website for our startup. Their attention to detail and professional approach exceeded our expectations. The SEO optimization has already increased our organic traffic by 150%.",
-    location: "Mumbai, India",
-  },
-  {
-    name: "Sarah Mitchell",
-    position: "Founder",
-    rating: 5,
-    text: "Working with HiveRift was a game-changer for our business. They transformed our outdated website into a modern, responsive platform that our customers love. Highly recommend their web development expertise!",
-    location: "San Francisco, USA",
+    text: "HiveRift built our startup website in under 2 weeks. The SEO setup alone increased our organic traffic by 150% in 3 months. Best investment we made.",
   },
   {
     name: "Priya Sharma",
     position: "Marketing Director",
+    location: "Delhi",
     rating: 5,
-    text: "The team at HiveRift built us a beautiful e-commerce website that's easy to manage and drives sales. Our conversion rate improved by 40% within the first month!",
-    location: "Delhi, India",
+    text: "We moved from page 5 to #1 on Google for our main keywords in 4 months. The team is responsive, professional, and genuinely cares about results.",
   },
-  
-  // Mobile App Development
-  {
-    name: "Michael Chen",
-    position: "CTO",
-    rating: 5,
-    text: "HiveRift developed our mobile app with incredible efficiency. The iOS and Android versions launched on time and bug-free. Their technical expertise in mobile development is unmatched.",
-    location: "New York, USA",
-  },
-  {
-    name: "Ananya Patel",
-    position: "Product Manager",
-    rating: 5,
-    text: "Our healthcare app needed HIPAA compliance and flawless UX. HiveRift delivered both perfectly. The patient feedback has been overwhelmingly positive!",
-    location: "Bangalore, India",
-  },
-  {
-    name: "David Rodriguez",
-    position: "Founder",
-    rating: 5,
-    text: "The mobile app HiveRift created for our fitness business is stunning and performs flawlessly. User engagement is up 200% since launch. Worth every penny!",
-    location: "Los Angeles, USA",
-  },
-
-  // Digital Marketing
   {
     name: "Sanjay Deshmukh",
     position: "Owner",
+    location: "Pune",
     rating: 5,
-    text: "HiveRift's digital marketing strategies brought our restaurant chain to the top of local search results. Our online orders increased by 180% in just 3 months!",
-    location: "Pune, India",
+    text: "Our restaurant chain now gets 180% more online orders thanks to HiveRift's local SEO and Google Ads. The ROI has been incredible.",
   },
   {
-    name: "Emily Watson",
-    position: "CMO",
+    name: "Anita Verma",
+    position: "Founder",
+    location: "Bangalore",
     rating: 5,
-    text: "Their SEO and social media marketing campaigns transformed our online presence. We went from page 5 to ranking #1 for our primary keywords. Exceptional results!",
-    location: "Seattle, USA",
+    text: "They built our e-commerce store and within one month our conversion rate improved by 40%. The Business Pro package was perfect for our budget.",
   },
   {
     name: "Vikram Singh",
     position: "Director",
+    location: "Jaipur",
     rating: 5,
-    text: "HiveRift's PPC campaigns gave us incredible ROI. They managed our Google Ads budget efficiently and delivered quality leads consistently. Highly professional team!",
-    location: "Jaipur, India",
-  },
-
-  // AI & Machine Learning
-  {
-    name: "Jennifer Park",
-    position: "VP Engineering",
-    rating: 5,
-    text: "HiveRift developed a custom ML model that dramatically improved our predictive analytics. Their AI expertise saved us months of development time.",
-    location: "Austin, USA",
-  },
-  {
-    name: "Amit Agarwal",
-    position: "Founder",
-    rating: 5,
-    text: "The AI solution HiveRift built for inventory forecasting has been a game-changer. Our stock optimization improved by 65%, reducing waste significantly.",
-    location: "Hyderabad, India",
-  },
-  {
-    name: "Lisa Thompson",
-    position: "Head of Innovation",
-    rating: 5,
-    text: "Their computer vision solution for medical imaging analysis exceeded our expectations. HiveRift's AI team is world-class!",
-    location: "Boston, USA",
-  },
-
-  // E-Commerce Solutions
-  {
-    name: "Neha Kapoor",
-    position: "Owner",
-    rating: 5,
-    text: "HiveRift set up our Shopify store with seamless payment integration and beautiful design. Sales have tripled since we launched. Couldn't be happier!",
-    location: "Chennai, India",
-  },
-  {
-    name: "Robert Martinez",
-    position: "CEO",
-    rating: 5,
-    text: "From product management to checkout optimization, HiveRift's e-commerce solution covers everything. Our cart abandonment rate dropped by 45%!",
-    location: "Miami, USA",
-  },
-  {
-    name: "Kavita Reddy",
-    position: "Director",
-    rating: 5,
-    text: "The custom e-commerce platform HiveRift built handles thousands of daily transactions flawlessly. Their ongoing support is excellent too!",
-    location: "Mumbai, India",
-  },
-
-  // UI/UX Design
-  {
-    name: "Alex Johnson",
-    position: "Product Lead",
-    rating: 5,
-    text: "HiveRift's UI/UX design transformed our confusing interface into an intuitive masterpiece. User satisfaction scores jumped from 6.2 to 9.1!",
-    location: "San Jose, USA",
-  },
-  {
-    name: "Ravi Malhotra",
-    position: "Founder",
-    rating: 5,
-    text: "The mobile app design they created is both beautiful and functional. Student engagement improved dramatically after the redesign!",
-    location: "Kolkata, India",
-  },
-  {
-    name: "Maria Garcia",
-    position: "Design Director",
-    rating: 5,
-    text: "Working with HiveRift's design team was a pleasure. They understood our brand perfectly and delivered prototypes that wowed our stakeholders.",
-    location: "Chicago, USA",
-  },
-
-  // Cloud & DevOps
-  {
-    name: "Suresh Iyer",
-    position: "CTO",
-    rating: 5,
-    text: "HiveRift migrated our entire infrastructure to AWS with zero downtime. Their DevOps expertise saved us thousands in cloud costs through smart optimization.",
-    location: "Bangalore, India",
-  },
-  {
-    name: "Christopher Lee",
-    position: "VP Operations",
-    rating: 5,
-    text: "The CI/CD pipeline they set up reduced our deployment time from hours to minutes. HiveRift's cloud architecture is robust and scalable!",
-    location: "Denver, USA",
-  },
-  {
-    name: "Pooja Nair",
-    position: "Head of IT",
-    rating: 5,
-    text: "Their cloud monitoring and security setup gives us peace of mind. No downtime in 8 months since HiveRift took over our infrastructure!",
-    location: "Delhi, India",
-  },
-
-  // Software Development
-  {
-    name: "James Anderson",
-    position: "CEO",
-    rating: 5,
-    text: "HiveRift built a custom CRM that perfectly fits our unique workflow. The automation features have increased our team's productivity by 50%!",
-    location: "Atlanta, USA",
-  },
-  {
-    name: "Deepak Verma",
-    position: "Managing Director",
-    rating: 5,
-    text: "The ERP system HiveRift developed streamlined our entire operation. Real-time tracking and reporting capabilities are exceptional!",
-    location: "Ahmedabad, India",
-  },
-  {
-    name: "Rachel Cohen",
-    position: "Operations Manager",
-    rating: 5,
-    text: "Their custom software solution automated our appointment scheduling and patient management. Staff efficiency improved by 60%!",
-    location: "Philadelphia, USA",
-  },
-
-  // Data Annotation & Training
-  {
-    name: "Karthik Subramanian",
-    position: "AI Lead",
-    rating: 5,
-    text: "HiveRift's data annotation team delivered high-quality labeled datasets that significantly improved our model accuracy. Professional and reliable!",
-    location: "Hyderabad, India",
-  },
-  {
-    name: "Nicole Brown",
-    position: "ML Engineer",
-    rating: 5,
-    text: "The video annotation work for our autonomous vehicle project was precise and delivered on schedule. HiveRift's quality control is top-notch!",
-    location: "Detroit, USA",
-  },
-  {
-    name: "Arun Kumar",
-    position: "Data Science Manager",
-    rating: 5,
-    text: "Their text annotation and NLP labeling services helped us launch our chatbot ahead of schedule. Great communication throughout the project!",
-    location: "Pune, India",
-  },
-
-  // Mixed Services
-  {
-    name: "Daniel Kim",
-    position: "Founder",
-    rating: 5,
-    text: "HiveRift handled our entire digital transformation - website, mobile app, and marketing. They're a one-stop shop for tech solutions!",
-    location: "Portland, USA",
-  },
-  {
-    name: "Meera Krishnan",
-    position: "CEO",
-    rating: 5,
-    text: "From initial concept to launch, HiveRift guided us every step. Their full-stack expertise across web, mobile, and cloud is impressive!",
-    location: "Chennai, India",
-  },
-  {
-    name: "Thomas Wright",
-    position: "Director",
-    rating: 5,
-    text: "We've partnered with HiveRift on multiple projects - each one delivered on time and exceeding quality expectations. They're now our go-to tech partner!",
-    location: "Washington DC, USA",
+    text: "Transparent pricing, fast delivery, and zero surprises. That is what I appreciated most. The website looks premium and works flawlessly on mobile.",
   },
 ];
 
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  const dragX = useMotionValue(0);
 
-  // Auto-play functionality
+  // Auto-play for mobile (since it's 1 card per view)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
-    }, 5000); // Change slide every 5 seconds
+    const timer = setInterval(() => {
+      if (dragX.get() === 0) { // Don't auto-slide if user is dragging
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      }
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [dragX]);
 
-    return () => clearInterval(interval);
-  }, [totalPages]);
-
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const getCurrentTestimonials = () => {
-    const startIndex = currentIndex * itemsPerPage;
-    return testimonials.slice(startIndex, startIndex + itemsPerPage);
+  const onDragEnd = (e: any, { offset, velocity }: any) => {
+    const swipeThreshold = 50;
+    if (offset.x < -swipeThreshold) {
+      setCurrentIndex((prev) => Math.min(prev + 1, testimonials.length - 1));
+    } else if (offset.x > swipeThreshold) {
+      setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    }
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/30 relative">
+    <section className="py-5 md:py-10  lg:py-15 bg-slate-50 relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Trustpilot Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center mb-6 md:mb-8"
-        >
-          <div className="bg-white px-4 py-3 md:px-8 md:py-4 rounded-xl md:rounded-2xl shadow-lg border border-emerald-100 flex flex-col sm:flex-row items-center gap-3 md:gap-4">
-            <div className="flex items-center gap-2">
-              <Star size={20} className="text-green-500 fill-green-500 md:hidden" />
-              <Star size={24} className="text-green-500 fill-green-500 hidden md:block" />
-              <span className="text-xl md:text-2xl font-bold text-gray-900">Trustpilot</span>
-            </div>
-            <div className="sm:border-l border-gray-300 sm:pl-4">
-              <div className="flex gap-0.5 md:gap-1 mb-1 justify-center">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-black text-gray-900 mb-6"
+          >
+            Trusted by Businesses <span className="text-emerald-600">Across India</span>
+          </motion.h2>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto font-medium">
+            Real clients. Real results. Here is what they say after working with HiveRift.
+          </p>
+        </div>
+
+        {/* Desktop View: 4 Cards in Responsive Grid */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-16">
+          {testimonials.slice(0, 4).map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="bg-white p-6 rounded-3xl border border-gray-100 shadow-xl hover:shadow-emerald-500/10 transition-all group"
+            >
+              <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} className="text-green-500 fill-green-500 md:hidden" />
-                ))}
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="text-green-500 fill-green-500 hidden md:block" />
+                  <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-xs md:text-sm text-gray-600 font-semibold">4.9 out of 5 | 250+ reviews</p>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-4">
-            Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Testimonials</span>
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Trusted by businesses across India and USA - hear what our satisfied clients have to say
-          </p>
-        </motion.div>
-
-        {/* Auto-playing Carousel */}
-        <div className="max-w-7xl mx-auto mb-6 md:mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {getCurrentTestimonials().map((testimonial, index) => (
-              <motion.div
-                key={`${currentIndex}-${index}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 h-full border border-gray-100 hover:border-emerald-200">
-                  <div className="flex gap-0.5 md:gap-1 mb-3 md:mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={16} className="text-yellow-400 fill-yellow-400 md:hidden" />
-                    ))}
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={20} className="text-yellow-400 fill-yellow-400 hidden md:block" />
-                    ))}
+              <p className="text-sm text-gray-600 leading-relaxed mb-6 italic">"{item.text}"</p>
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-50">
+                <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  {item.name[0]}
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-gray-900">{item.name}</div>
+                  <div className="text-[10px] font-bold text-emerald-600 uppercase tracking-tighter flex items-center gap-1">
+                    {item.position} • {item.location}
                   </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-                  <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-4 md:mb-6 min-h-[100px] md:min-h-[120px]">
-                    "{testimonial.text}"
-                  </p>
-
-                  <div className="pt-3 md:pt-4 border-t border-gray-100">
-                    <div className="font-bold text-gray-900 text-sm md:text-base">
-                      {testimonial.name}
+        {/* Mobile View: 1 Card Slider with Drag Support */}
+        <div className="lg:hidden relative">
+          <div className="overflow-hidden">
+            <motion.div 
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              style={{ x: dragX }}
+              animate={{ x: `-${currentIndex * 100}%` }}
+              onDragEnd={onDragEnd}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="flex items-stretch cursor-grab active:cursor-grabbing"
+            >
+              {testimonials.map((item, idx) => (
+                <div key={idx} className="w-full flex-shrink-0 px-2">
+                  <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-xl min-h-[350px] flex flex-col justify-between">
+                    <div>
+                      <div className="flex gap-1 mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <p className="text-lg text-gray-700 leading-relaxed mb-8 italic">"{item.text}"</p>
                     </div>
-                    <div className="text-xs md:text-sm text-emerald-600 font-semibold">
-                      {testimonial.position}
-                    </div>
-                    <div className="text-xs text-gray-500 mt-1">
-                      📍 {testimonial.location}
+                    <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+                      <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                        {item.name[0]}
+                      </div>
+                      <div>
+                        <div className="text-base font-bold text-gray-900">{item.name}</div>
+                        <div className="text-xs font-bold text-emerald-600 uppercase flex items-center gap-1">
+                           {item.position} • {item.location}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </motion.div>
           </div>
-
-          {/* Bullet Point Indicators */}
-          <div className="flex justify-center items-center gap-2 mt-6 md:mt-8">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handleDotClick(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  currentIndex === index
-                    ? "bg-gradient-to-r from-emerald-600 to-teal-600 w-8 h-3"
-                    : "bg-gray-300 hover:bg-gray-400 w-3 h-3"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
+          <div className="flex justify-center gap-2 mt-8">
+            {testimonials.map((_, i) => (
+              <button 
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`h-2 rounded-full transition-all ${currentIndex === i ? "w-8 bg-emerald-600" : "w-2 bg-emerald-200"}`}
               />
             ))}
           </div>
         </div>
 
-        {/* Remove Stats Summary section */}
+        {/* Trustpilot Widget */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 flex justify-center"
+        >
+          <div className="bg-white px-6 py-4 rounded-2xl border border-gray-100 flex items-center gap-4 shadow-sm">
+            <div className="flex items-center gap-1.5">
+              <Star size={24} className="fill-green-500 text-green-500" />
+              <span className="text-xl font-black text-gray-900 tracking-tighter">Trustpilot</span>
+            </div>
+            <div className="w-px h-8 bg-gray-200"></div>
+            <div>
+              <div className="flex gap-0.5 mb-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-4 h-4 bg-green-500 flex items-center justify-center text-white text-[8px] font-bold rounded-sm">★</div>
+                ))}
+              </div>
+              <p className="text-[10px] font-black text-gray-900 uppercase">
+                4.9 / 5 <span className="text-gray-400 font-medium whitespace-nowrap">| 250+ reviews</span>
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

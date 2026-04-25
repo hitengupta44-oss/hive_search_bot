@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link, useLocation, useNavigate } from "react-router";
 import logoImage from "figma:asset/7fe77d5a1d2e3ea35cd92869801d704f0f2dbc95.png";
@@ -60,49 +60,78 @@ export function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
             <Link
               to="/"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
-              About Us
+              About
             </Link>
             <Link
               to="/services"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
               Services
             </Link>
             <Link
               to="/solutions"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
               Solutions
             </Link>
             <Link
               to="/industries"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
               Industries
             </Link>
             <Link
               to="/case-studies"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
               Case Studies
             </Link>
             <Link
-              to="/contact"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              to="/pricing"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
             >
-              Contact
+              Pricing
             </Link>
+            <Link
+              to="/blog"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+            >
+              Blog
+            </Link>
+            <div className="relative group py-2">
+              <Link
+                to="/contact"
+                className="text-gray-700 group-hover:text-emerald-600 group-hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap flex items-center gap-1"
+              >
+                Contact
+                <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
+              </Link>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl rounded-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-[100]">
+                <Link 
+                  to="/contact" 
+                  className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
+                >
+                  Contact Us
+                </Link>
+                <Link 
+                  to="/careers" 
+                  className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors border-t border-gray-50"
+                >
+                  Careers
+                </Link>
+              </div>
+            </div>
           </nav>
 
           {/* CTA Button */}
@@ -126,63 +155,42 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 bg-white">
-            <nav className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                About Us
-              </Link>
-              <Link
-                to="/services"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                Services
-              </Link>
-              <Link
-                to="/solutions"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                Solutions
-              </Link>
-              <Link
-                to="/industries"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                Industries
-              </Link>
-              <Link
-                to="/case-studies"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                Case Studies
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-left"
-              >
-                Contact
-              </Link>
-              <Button
-                onClick={() => scrollToSection("contact")}
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white w-full"
-              >
-                Get Started
-              </Button>
+          <div className="lg:hidden py-6 bg-white shadow-2xl border-t border-gray-100 animate-in fade-in slide-in-from-top-4 duration-300">
+            <nav className="flex flex-col px-6 space-y-2 overflow-y-auto max-h-[80vh]">
+              {[
+                { name: "Home", path: "/" },
+                { name: "About Us", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Solutions", path: "/solutions" },
+                { name: "Industries", path: "/industries" },
+                { name: "Case Studies", path: "/case-studies" },
+                { name: "Pricing", path: "/pricing" },
+                { name: "Blog", path: "/blog" },
+                { name: "Contact Us", path: "/contact" },
+                { name: "Careers", path: "/careers" }
+              ].map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-800 hover:text-emerald-600 transition-colors font-bold text-lg py-4 border-b border-gray-50 flex items-center justify-between group"
+                >
+                  {link.name}
+                  <ChevronDown className="-rotate-90 text-gray-300 group-hover:text-emerald-500 transition-colors" size={16} />
+                </Link>
+              ))}
+              
+              <div className="pt-6 pb-4">
+                <Button
+                  onClick={() => {
+                    navigate("/contact");
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white w-full py-6 rounded-2xl font-black text-lg shadow-lg"
+                >
+                  Get Started
+                </Button>
+              </div>
             </nav>
           </div>
         )}

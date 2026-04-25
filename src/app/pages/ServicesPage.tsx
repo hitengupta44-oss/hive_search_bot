@@ -3,6 +3,15 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowRight,
   Sparkles,
+  Globe,
+  Smartphone,
+  Code,
+  Brain,
+  Database,
+  TrendingUp,
+  ShoppingCart,
+  Palette,
+  Cloud
 } from "lucide-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -12,78 +21,89 @@ const servicesData = [
   {
     id: "web-development",
     title: "Web Development",
-    shortDescription: "Professional, responsive & SEO-friendly websites that help your business grow online.",
-    image: "https://i.pinimg.com/1200x/a8/e8/0a/a8e80a73380d7c15d549a23be9790da8.jpg",
+    shortDescription: "High-performance web ecosystems built for global brands.",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1080",
     category: "Development",
     highlighted: true,
+    icon: Globe
   },
   {
     id: "mobile-development",
     title: "Mobile App Development",
-    shortDescription: "Android & iOS applications built for performance, usability & scalability.",
-    image: "https://i.pinimg.com/736x/4d/e2/6b/4de26bb962a47b9d5c2e76d30544ddc1.jpg",
+    shortDescription: "Native & Hybrid mobile experiences that redefine user engagement.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1080",
     category: "Development",
     highlighted: false,
+    icon: Smartphone
   },
   {
     id: "software-development",
-    title: "Software Development",
-    shortDescription: "Powering efficiency & automation with tailored software built for your workflow.",
-    image: "https://i.pinimg.com/736x/96/d1/cc/96d1cc416bfc7a2a0a16feb235f1defa.jpg",
-    category: "Software Development",
+    title: "Software Engineering",
+    shortDescription: "Tailored software built for automation, efficiency, and ROI.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1080",
+    category: "Development",
     highlighted: false,
+    icon: Code
   },
   {
     id: "ai-ml",
     title: "AI & Machine Learning",
-    shortDescription: "Intelligent AI solutions that automate processes and deliver data-driven insights.",
-    image: "https://i.pinimg.com/736x/db/29/c7/db29c787516fbb468ea220803f35862a.jpg",
+    shortDescription: "Transforming raw data into predictive intelligence and insights.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1080",
     category: "AI & Data",
     highlighted: false,
+    icon: Brain
   },
   {
     id: "data-annotation",
-    title: "Data Annotation & AI Training",
-    shortDescription: "High-quality labeled datasets to train accurate and scalable AI models.",
-    image: "https://i.pinimg.com/736x/65/08/28/6508288ba811d1bb90534dcb8f581e3c.jpg",
+    title: "Data Annotation",
+    shortDescription: "High-precision training data prepared for the next generation of AI.",
+    image: "https://i.pinimg.com/1200x/3f/bd/39/3fbd39179ec2be6cd25a41cfdfe94b9a.jpg",
     category: "AI & Data",
     highlighted: false,
+    icon: Database
   },
   {
     id: "digital-marketing",
     title: "Digital Marketing",
-    shortDescription: "Drive leads, conversions & brand visibility with comprehensive digital marketing strategies.",
-    image: "https://i.pinimg.com/736x/3d/f2/d6/3df2d668076abbadd1204774b0a7173b.jpg",
+    shortDescription: "Data-backed strategies that scale your brand visibility and ROI.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1080",
     category: "Marketing",
     highlighted: true,
+    icon: TrendingUp
   },
   {
     id: "ecommerce",
     title: "E-Commerce Solutions",
-    shortDescription: "Setup, optimize & grow online stores with seamless shopping experiences.",
+    shortDescription: "Launch & scale online stores with enterprise commerce infrastructure.",
     image: "https://i.pinimg.com/1200x/76/30/85/7630856095ac7979117823645648bcb5.jpg",
     category: "Design & Cloud",
     highlighted: false,
+    icon: ShoppingCart
   },
   {
     id: "ui-ux",
-    title: "UI/UX Design & Prototyping",
-    shortDescription: "Beautiful, intuitive designs that keep users engaged & build trust.",
-    image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1aSUyMHV4JTIwZGVzaWduJTIwaW50ZXJmYWNlfGVufDF8fHx8MTc3MDgwMTI5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+    title: "UI/UX Design",
+    shortDescription: "Pixel-perfect interfaces that resonate with users and drive engagement.",
+    image: "https://i.pinimg.com/736x/68/aa/61/68aa613db13accf414562a2ec1fd72d7.jpg",
     category: "Design & Cloud",
     highlighted: false,
+    icon: Palette
   },
   {
     id: "cloud-devops",
-    title: "Cloud & DevOps Services",
-    shortDescription: "Secure, scalable cloud infrastructure with automated deployment pipelines.",
-    image: "https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbG91ZCUyMGNvbXB1dGluZyUyMHNlcnZlcnN8ZW58MXx8fHwxNzcwODgwNTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    title: "Cloud & DevOps",
+    shortDescription: "Scalable cloud ecosystems with fully automated delivery pipelines.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1080",
     category: "Design & Cloud",
     highlighted: false,
-  },
+    icon: Cloud
+  }
 ];
 
 const categories = ["All Services", "Development", "AI & Data", "Marketing", "Design & Cloud"];
+
+import { Helmet } from "react-helmet-async";
 
 export function ServicesPage() {
   const [activeCategory, setActiveCategory] = useState("All Services");
@@ -94,128 +114,165 @@ export function ServicesPage() {
       : servicesData.filter((service) => service.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-50">
+      <Helmet>
+        <title>Our Digital Services | Web, Mobile, AI & Marketing | HiveRift</title>
+        <meta name="description" content="Explore HiveRift's comprehensive digital services including Web & Mobile Development, AI/ML, Cloud DevOps, and Digital Marketing solutions." />
+        <meta name="keywords" content="digital services, web development, mobile apps, AI solutions, SEO marketing, HiveRift portfolio" />
+      </Helmet>
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[500px] overflow-hidden mt-20 bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-900">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-500 rounded-full blur-3xl"></div>
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1920" 
+            alt="HiveRift Services"
+            className="w-full h-full object-cover scale-105 animate-slow-zoom opacity-40 grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950 to-emerald-950/30"></div>
         </div>
 
-        <div className="container mx-auto px-4 lg:px-8 h-full relative z-10 flex items-center">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6">
-              <Sparkles size={16} className="text-emerald-400" />
-              <span className="text-sm font-semibold text-white tracking-wide">
-                COMPREHENSIVE SOLUTIONS
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 rounded-full mb-8 text-emerald-400">
+              <Sparkles size={14} />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em]">
+                Explore Our Ecosystem
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-              Our Services
-            </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
-              From innovative software development to strategic digital marketing, we provide end-to-end solutions that drive growth and transform businesses
-            </p>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-none"
+            >
+              Comprehensive <br/>
+              <span className="relative inline-block mt-2">
+                <span className="text-emerald-500">Digital Solutions</span>
+                <span className="absolute -bottom-2 left-0 w-full h-3 bg-emerald-500/20 rounded-full -z-10"></span>
+                <span className="absolute -bottom-1 left-0 w-1/2 h-1 bg-emerald-500 rounded-full"></span>
+              </span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-200 mt-6 leading-relaxed font-bold opacity-90 max-w-2xl"
+            >
+              Empowering businesses with high-end engineering, intelligent data models, and growth-driven marketing strategies.
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30">
+      {/* Services List Section */}
+      <section className="py-24 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {/* Category Filters */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-wrap justify-center gap-3 mb-16"
-            >
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                    activeCategory === category
-                      ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/30 scale-105"
-                      : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-emerald-300 hover:shadow-md"
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-3 mb-20">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-8 py-3 rounded-2xl font-black text-sm transition-all duration-300 border ${activeCategory === category
+                    ? "bg-emerald-600 text-white border-emerald-600 shadow-xl"
+                    : "bg-white text-gray-400 border-gray-100 hover:border-emerald-200 hover:text-emerald-600"
                   }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </motion.div>
+              >
+                {category}
+              </button>
+            ))}
+          </div>
 
-            {/* Services Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <AnimatePresence mode="popLayout">
-                {filteredServices.map((service, index) => {
-                  return (
-                    <motion.div
-                      key={service.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                    >
-                      <Link to={`/services/${service.id}`}>
-                        <div className="group relative h-full overflow-hidden rounded-3xl transition-all duration-500 hover:shadow-2xl hover:scale-105">
-                          {/* Highlight Badge */}
-                          {service.highlighted && (
-                            <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg z-10">
-                              ⭐ Featured
-                            </div>
-                          )}
-
-                          {/* Image with Overlay */}
-                          <div className="relative h-80 overflow-hidden">
-                            <img
-                              src={service.image}
-                              alt={service.title}
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-emerald-900 via-emerald-900/80 to-emerald-900/40"></div>
-                          </div>
-
-                          {/* Content */}
-                          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                            <h3 className="text-2xl font-bold mb-3 group-hover:text-teal-300 transition-colors duration-300">
-                              {service.title}
-                            </h3>
-
-                            <p className="text-white/90 mb-6 leading-relaxed line-clamp-2">
-                              {service.shortDescription}
-                            </p>
-
-                            {/* Learn More Button */}
-                            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full font-semibold transition-all duration-300 group-hover:bg-white group-hover:text-emerald-900">
-                              Learn More
-                              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+          {/* Catalog Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence mode="popLayout">
+              {filteredServices.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    key={service.id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="group"
+                  >
+                    <Link to={`/services/${service.id}`}>
+                      <div className="relative h-full rounded-2xl bg-white border border-gray-100 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+                        {/* Image Header */}
+                        <div className="relative h-64 overflow-hidden">
+                          <img 
+                            src={service.image} 
+                            alt={service.title} 
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute  to-transparent"></div>
+                          
+                          {/* Floating Icon */}
+                          <div className="absolute bottom-6 left-8">
+                            <div className="inline-flex p-4 bg-white/90 backdrop-blur-md rounded-2xl text-emerald-600 shadow-xl border border-white/20">
+                              <Icon size={24} strokeWidth={2.5} />
                             </div>
                           </div>
                         </div>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-            </div>
+
+                        {/* Content */}
+                        <div className="p-10 pt-4">
+                          <div className="flex items-center gap-3 mb-4">
+                             <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest px-2 py-1 bg-emerald-50 rounded-lg">
+                                {service.category}
+                             </span>
+                             {service.highlighted && (
+                                <span className="flex items-center gap-1 text-[10px] font-black text-yellow-600 uppercase tracking-widest px-2 py-1 bg-yellow-50 rounded-lg">
+                                  ⭐ Featured
+                                </span>
+                             )}
+                          </div>
+
+                          <h3 className="text-2xl font-black text-gray-900 mb-4 tracking-tight group-hover:text-emerald-600 transition-colors">
+                            {service.title}
+                          </h3>
+
+                          <p className="text-gray-500 font-medium leading-relaxed mb-10 line-clamp-2">
+                            {service.shortDescription}
+                          </p>
+
+                          <div className="inline-flex items-center gap-2 text-emerald-600 font-black text-xs uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
+                            View Details <ArrowRight size={14} />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         </div>
       </section>
 
       <Footer />
+
+      <style>{`
+        @keyframes slow-zoom {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+        .animate-slow-zoom {
+          animation: slow-zoom 20s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }

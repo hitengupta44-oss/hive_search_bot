@@ -1,40 +1,48 @@
 import { motion } from "motion/react";
-import { Target, Shield, Zap, Award } from "lucide-react";
+import { Target, Shield, Zap, Award, Handshake, CircleDollarSign } from "lucide-react";
 
 const features = [
   {
     icon: Target,
     title: "ROI-Focused Solutions",
-    description: "We deliver measurable results that directly impact your business growth and revenue.",
+    description: "Every project is measured by results — traffic, leads, conversions, and revenue. We don't just build; we grow your business.",
     gradient: "from-emerald-500 to-teal-500",
-    hoverGradient: "from-emerald-600 to-teal-600",
   },
   {
     icon: Zap,
-    title: "Fast & Efficient",
-    description: "Agile development process ensuring timely delivery without compromising quality.",
+    title: "Fast & Agile Delivery",
+    description: "Our sprint-based development process means you see progress every week, not just at the end. Most websites live in 2–4 weeks.",
     gradient: "from-emerald-600 to-teal-600",
-    hoverGradient: "from-emerald-700 to-teal-700",
   },
   {
     icon: Shield,
     title: "Secure & Reliable",
-    description: "Enterprise-grade security and performance built into every solution we create.",
+    description: "SSL, daily backups, malware protection, and enterprise-grade hosting are standard on every project we deliver.",
     gradient: "from-teal-500 to-emerald-500",
-    hoverGradient: "from-teal-600 to-emerald-600",
   },
   {
     icon: Award,
-    title: "Proven Excellence",
-    description: "5+ years of experience delivering successful projects across 10+ countries.",
+    title: "Proven in India & Globally",
+    description: "5+ years, 387+ clients, 98% success rate. From Delhi startups to global enterprises — we have delivered it all.",
     gradient: "from-teal-600 to-emerald-600",
-    hoverGradient: "from-teal-700 to-emerald-700",
+  },
+  {
+    icon: Handshake,
+    title: "Dedicated Support",
+    description: "A real person answers your call. Every client gets a dedicated account manager who knows your project inside out.",
+    gradient: "from-emerald-500 to-teal-500",
+  },
+  {
+    icon: CircleDollarSign,
+    title: "Transparent Pricing",
+    description: "No hidden charges. No surprise invoices. What we quote is what you pay — with GST clearly stated upfront.",
+    gradient: "from-emerald-600 to-teal-600",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 relative overflow-hidden">
+    <section className="py-5 md:py-10 lg:py-15 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-emerald-100/40 to-teal-100/40 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-teal-100/40 to-cyan-100/40 rounded-full blur-3xl -z-10"></div>
@@ -55,17 +63,14 @@ export function WhyChooseUs() {
           </div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 md:mb-6 px-4">
-            Why Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
-              HiveRift?
-            </span>
+            Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">387+ Businesses</span> Choose HiveRift
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-            We combine technical expertise with strategic thinking to deliver solutions that drive real business results
+            We combine technical expertise with business strategy to deliver solutions that actually grow your revenue — not just look good.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -83,13 +88,10 @@ export function WhyChooseUs() {
 
                   {/* Icon Container */}
                   <div className="relative mb-4 md:mb-6">
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-lg shadow-emerald-500/30 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-emerald-500/40`}>
-                      <Icon size={28} className="text-white md:hidden" strokeWidth={2.5} />
-                      <Icon size={36} className="text-white hidden md:block" strokeWidth={2.5} />
+                    <div className={`w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-lg shadow-emerald-500/30 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-emerald-500/40`}>
+                      <Icon size={24} className="text-white md:hidden" strokeWidth={2.5} />
+                      <Icon size={28} className="text-white hidden md:block" strokeWidth={2.5} />
                     </div>
-                    
-                    {/* Animated ring */}
-                    <div className={`absolute inset-0 w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-20 scale-100 group-hover:scale-125 transition-all duration-500`}></div>
                   </div>
 
                   {/* Content */}
@@ -97,7 +99,7 @@ export function WhyChooseUs() {
                     {feature.title}
                   </h3>
 
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed md:line-clamp-3 group-hover:line-clamp-none transition-all">
                     {feature.description}
                   </p>
 

@@ -10,29 +10,32 @@ export function AboutUs() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {/* Hero Section with Image Background */}
-      <section className="relative h-[500px] overflow-hidden mt-20">
+      {/* Hero Section with Image Background - Properly Aligned */}
+      <section className="relative min-h-[400px] md:h-[550px] overflow-hidden mt-20 flex items-center">
         <div className="absolute inset-0">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9uJTIwbWVldGluZyUyMHByb2Zlc3Npb25hbHxlbnwxfHx8fDE3NzA4ODEyMDB8MA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="HiveRift Team"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-teal-900/85 to-slate-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/90 via-emerald-900/85 to-slate-900/95"></div>
         </div>
 
-        <div className="container mx-auto px-4 lg:px-8 h-full relative z-10 flex items-center">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-              About Us
+            <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-400 px-4 py-2 rounded-full text-[10px] md:text-xs font-bold mb-6 uppercase tracking-widest backdrop-blur-sm">
+              Digital Excellence
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[1.2]">
+              About HiveRift — <span className="text-emerald-500 underline decoration-emerald-500/30 underline-offset-8">Building Digital Excellence</span> Since 2019
             </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
-              Transforming businesses through innovative digital solutions and strategic technology partnerships
+            <p className="text-lg md:text-2xl text-white/95 leading-relaxed max-w-4xl font-medium">
+              We are a team of developers, designers, marketers, and strategists united by one goal: to help businesses across India and the world grow through the power of technology.
             </p>
           </motion.div>
         </div>
@@ -51,7 +54,7 @@ export function AboutUs() {
               className="text-center mb-20"
             >
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Who We Are
+                Who We <span className="text-emerald-600">Are</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 HiveRift is a leading digital solutions company helping businesses leverage technology to achieve sustainable growth and competitive advantage in today's digital economy.
@@ -82,51 +85,52 @@ export function AboutUs() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                  Our Story
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Building Digital Excellence Since 2022
-                </h3>
-                <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+                <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
+                  Our <span className="text-emerald-600">Story</span>
+                </h2>
+                <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
                   <p>
-                    We started <span className="font-semibold text-emerald-600">KhatuShyam Technologies</span> in 2022 with a clear and simple goal — to help businesses use technology more effectively so they can work smarter and grow faster.
+                    <span className="text-emerald-600 font-bold">HiveRift</span> began its journey as <span className="text-emerald-600 font-bold">KhatuShyam Technologies in 2019</span> — a small but passionate team with a clear vision: make great technology accessible to every business, not just large corporations.
                   </p>
                   <p>
-                    As we collaborated with a diverse range of clients, we recognized a larger opportunity to solve everyday business challenges through innovative and cutting-edge IT solutions. This vision gave rise to HiveRift.
+                    Over the years, as we worked with clients ranging from first-time founders in Delhi to established enterprises in Mumbai and Bangalore, we saw the same pattern — businesses were struggling to find a technology partner who understood their budget, their market, and their growth ambitions.
                   </p>
                   <p>
-                    Today, everything operates under one unified identity — <span className="font-semibold text-emerald-600">HiveRift | KhatuShyam Technologies</span>. We function as a single, dedicated team providing comprehensive services including software development, digital marketing, strategic consulting, and operational support.
+                    That gap is exactly what HiveRift was built to fill. Today, operating under the unified identity of <span className="text-emerald-600 font-bold">HiveRift | KhatuShyam Technologies</span>, we are a full-service digital agency with <span className="text-gray-900 font-bold">50+ team members</span>, offices in New Delhi, USA, and Canada, and a client base spanning 10+ countries.
+                  </p>
+                  <p className="text-xl text-gray-900 font-bold border-l-4 border-emerald-500 pl-6 py-2 bg-emerald-50/50 rounded-r-xl">
+                    We are not just a vendor. We are your <span className="text-emerald-600 underline decoration-emerald-500/30 underline-offset-4">digital growth partner</span> — invested in your success every step of the way.
                   </p>
                 </div>
               </motion.div>
             </div>
 
-            {/* Stats Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24"
-            >
-              <div className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl p-8 text-center text-white shadow-xl">
-                <div className="text-5xl font-bold mb-2">250+</div>
-                <div className="text-white/90">Projects Delivered</div>
-              </div>
-              <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 text-center text-white shadow-xl">
-                <div className="text-5xl font-bold mb-2">99%</div>
-                <div className="text-white/90">Client Retention</div>
-              </div>
-              <div className="bg-gradient-to-br from-teal-500 to-emerald-500 rounded-2xl p-8 text-center text-white shadow-xl">
-                <div className="text-5xl font-bold mb-2">10+</div>
-                <div className="text-white/90">Countries Served</div>
-              </div>
-              <div className="bg-gradient-to-br from-teal-600 to-emerald-600 rounded-2xl p-8 text-center text-white shadow-xl">
-                <div className="text-5xl font-bold mb-2">5+</div>
-                <div className="text-white/90">Years in Business</div>
-              </div>
-            </motion.div>
+            {/* Numbers / Milestones Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-24">
+              {[
+                { label: "Founded", value: "2019", desc: "Started as KhatuShyam Technologies" },
+                { label: "Projects Delivered", value: "250+", desc: "Websites, apps, software, and marketing campaigns" },
+                { label: "Team Members", value: "50+", desc: "Developers, designers, marketers, and strategists" },
+                { label: "Client Retention", value: "99%", desc: "Clients who come back for their next project" },
+                { label: "Countries Served", value: "10+", desc: "India, USA, Canada, UK, UAE, and more" },
+                { label: "Average Growth Rate", value: "111%", desc: "Average business growth for our clients" }
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 text-center hover:border-emerald-500 transition-all group"
+                >
+                  <div className="text-3xl font-black text-emerald-600 mb-1">{stat.value}</div>
+                  <div className="text-sm font-bold text-gray-900 mb-2 uppercase tracking-tight">{stat.label}</div>
+                  <div className="text-[10px] leading-tight font-bold text-gray-400 uppercase tracking-tighter opacity-80 group-hover:opacity-100">
+                    {stat.desc}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
             {/* Mission & Vision */}
             <div className="grid lg:grid-cols-2 gap-12 mb-24">
@@ -142,7 +146,7 @@ export function AboutUs() {
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To empower businesses worldwide with innovative technology solutions that drive growth, efficiency, and sustainable success. We're committed to being more than just a service provider—we're your trusted technology partner.
+                  To empower businesses across India and the world with innovative technology solutions that drive real growth, improve efficiency, and create lasting competitive advantage — at a price point that makes sense for the Indian market.
                 </p>
               </motion.div>
 
@@ -158,7 +162,7 @@ export function AboutUs() {
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To be the global leader in digital transformation, known for delivering exceptional results, fostering innovation, and creating lasting partnerships that help businesses thrive in the digital age.
+                  To be India's most trusted digital transformation partner — known not just for the quality of our work, but for the long-term success of every client we serve.
                 </p>
               </motion.div>
             </div>
@@ -185,14 +189,15 @@ export function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-emerald-500"
+                className="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-emerald-500"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6">
                   <Users size={32} className="text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">TALENT</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 uppercase tracking-tight">TALENT</h3>
+                <p className="text-emerald-600 font-bold mb-3 tracking-tight">Skilled People, Measurable Outcomes</p>
                 <p className="text-gray-700 leading-relaxed">
-                  Skilled teams delivering measurable outcomes through expertise and innovation. Our professionals bring years of experience and passion to every project.
+                  Our team brings years of real-world experience in web development, mobile apps, AI, digital marketing, and business strategy. We hire for passion as much as skill.
                 </p>
               </motion.div>
 
@@ -201,14 +206,15 @@ export function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-teal-500"
+                className="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-teal-500"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
                   <Zap size={32} className="text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">TAILORED</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 uppercase tracking-tight">TAILORED</h3>
+                <p className="text-teal-600 font-bold mb-3 tracking-tight">Built for Your Business, Not a Template</p>
                 <p className="text-gray-700 leading-relaxed">
-                  Custom-built solutions designed to solve real business challenges effectively. We don't believe in one-size-fits-all approaches.
+                  We do not believe in copy-paste solutions. Every project starts with understanding your business, your customers, and your goals — then we build from there.
                 </p>
               </motion.div>
 
@@ -217,14 +223,15 @@ export function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-cyan-500"
+                className="bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-cyan-500"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6">
                   <Award size={32} className="text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">TRUST</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 uppercase tracking-tight">TRUST</h3>
+                <p className="text-cyan-600 font-bold mb-3 tracking-tight">Transparent, Reliable, Long-Term</p>
                 <p className="text-gray-700 leading-relaxed">
-                  Transparent processes and reliable delivery that build long-term confidence. We're committed to your success every step of the way.
+                  We communicate clearly, deliver on time, and never hide behind fine print. Over 99% of our clients return for their next project — and that says everything.
                 </p>
               </motion.div>
             </div>
@@ -285,7 +292,7 @@ export function AboutUs() {
               </motion.div>
             </div>
 
-            {/* What We Stand For */}
+            {/* Core Values Section */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -293,10 +300,10 @@ export function AboutUs() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Stand For</span>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Core <span className="text-emerald-600">Values</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
                 These aren't just buzzwords—they're the principles that guide every decision we make
               </p>
             </motion.div>
@@ -304,29 +311,29 @@ export function AboutUs() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
               {[
                 {
-                  icon: Award,
+                  icon: Target,
                   title: "Purpose-Driven",
-                  description: "We wake up every day focused on helping your business win. Technology is just the tool—your success is the goal.",
+                  description: "We come to work every day focused on your success. Technology is just the means — your growth is the mission.",
                 },
                 {
                   icon: Users,
                   title: "Better Together",
-                  description: "Great work happens when people collaborate. We partner closely with you to deliver the best solutions.",
+                  description: "We collaborate closely with every client, treating your team as an extension of ours.",
                 },
                 {
-                  icon: TrendingUp,
+                  icon: Award,
                   title: "Always Raising the Bar",
-                  description: "We pour care and craft into every project because we know you're counting on us to deliver excellence.",
-                },
-                {
-                  icon: Globe,
-                  title: "Thinking Globally",
-                  description: "Our team spans different cultures bringing fresh perspectives to every challenge, wherever you are.",
+                  description: "Good enough is never enough. We review, refine, and improve — on every project, every sprint.",
                 },
                 {
                   icon: Heart,
                   title: "You Come First",
-                  description: "Your wins are our wins. We're here to build real partnerships where your growth becomes our shared mission.",
+                  description: "Your priorities become our priorities. If something is not working, we fix it — proactively, not reactively.",
+                },
+                {
+                  icon: Globe,
+                  title: "Thinking Globally, Acting Locally",
+                  description: "We bring global delivery standards to the Indian market, with pricing and support that works for Indian businesses.",
                 },
                 {
                   icon: CheckCircle2,
@@ -342,13 +349,13 @@ export function AboutUs() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-slate-50 to-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+                    className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center mb-4">
                       <Icon size={24} className="text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                    <p className="text-gray-600 leading-relaxed font-medium">{value.description}</p>
                   </motion.div>
                 );
               })}
@@ -371,7 +378,7 @@ export function AboutUs() {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="h-48 rounded-xl overflow-hidden shadow-lg">
+                    <div className="h-48 rounded-2xl overflow-hidden shadow-lg">
                       <ImageWithFallback
                         src="https://images.unsplash.com/photo-1748346918817-0b1b6b2f9bab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB3b3Jrc3BhY2UlMjB0ZWFtfGVufDF8fHx8MTc3MDg3ODEwN3ww&ixlib=rb-4.1.0&q=80&w=1080"
                         alt="Modern Workspace"
@@ -380,14 +387,14 @@ export function AboutUs() {
                     </div>
                   </div>
                   <div className="space-y-4 mt-8">
-                    <div className="h-48 rounded-xl overflow-hidden shadow-lg">
+                    <div className="h-48 rounded-2xl overflow-hidden shadow-lg">
                       <ImageWithFallback
                         src="https://images.unsplash.com/photo-1758518727888-ffa196002e59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0JTIwY29uZmlkZW50fGVufDF8fHx8MTc3MDgzMjM3MXww&ixlib=rb-4.1.0&q=80&w=1080"
                         alt="Professional Team Member"
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="h-64 rounded-xl overflow-hidden shadow-lg">
+                    <div className="h-64 rounded-2xl overflow-hidden shadow-lg">
                       <div className="w-full h-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center p-6">
                         <div className="text-center text-white">
                           <div className="text-5xl font-bold mb-2">111%</div>

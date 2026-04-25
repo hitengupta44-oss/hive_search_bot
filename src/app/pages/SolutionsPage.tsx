@@ -32,98 +32,92 @@ const industrySolutions = [
   {
     id: "finance",
     name: "Banking & Financial Services",
-    icon: Building2,
+    icon: Landmark,
+    problem: "Outdated systems, poor mobile experience, compliance gaps",
+    solution: "Core banking modernisation, mobile banking apps, fraud detection, compliance dashboards",
     color: "from-emerald-500 to-teal-500",
     image: "https://i.pinimg.com/736x/74/d1/32/74d1320b80747acd0234b7a458ebe1e2.jpg",
-    description: "Transform your financial services with secure, scalable digital solutions that enhance customer experience and operational efficiency.",
   },
   {
     id: "healthcare",
     name: "Healthcare & Life Sciences",
     icon: Heart,
+    problem: "Disconnected patient records, no digital booking, poor communication",
+    solution: "Telemedicine platforms, ABDM-compliant apps, patient portals, appointment systems",
     color: "from-emerald-600 to-teal-600",
     image: "https://i.pinimg.com/1200x/24/83/de/2483dec64055ddcf8baa5e2760543d48.jpg",
-    description: "Deliver better patient care with innovative healthcare technology solutions that streamline operations and improve outcomes.",
   },
   {
     id: "retail",
     name: "Retail & E-Commerce",
     icon: ShoppingCart,
+    problem: "Low online visibility, poor mobile shopping, high cart abandonment",
+    solution: "Omnichannel e-commerce, mobile shopping apps, personalisation engines, analytics",
     color: "from-teal-500 to-emerald-500",
     image: "https://i.pinimg.com/736x/d9/c9/ca/d9c9ca3071f052121f8c70ccd8b0e89b.jpg",
-    description: "Drive sales and customer loyalty with omnichannel retail solutions that deliver seamless shopping experiences.",
   },
   {
     id: "education",
     name: "Education & E-Learning",
     icon: GraduationCap,
+    problem: "No digital learning infrastructure, poor student engagement",
+    solution: "LMS platforms, live class systems, student portals, assessment tools, mobile apps",
     color: "from-teal-600 to-emerald-600",
     image: "https://i.pinimg.com/736x/00/d7/29/00d7294e25073d9d1899e4f52e014b32.jpg",
-    description: "Empower educators and students with digital learning platforms that make education accessible and engaging.",
   },
   {
     id: "manufacturing",
     name: "Manufacturing",
     icon: Factory,
+    problem: "Manual tracking, supply chain gaps, no real-time visibility",
+    solution: "IoT-enabled MES systems, supply chain dashboards, ERP integration, predictive maintenance",
     color: "from-emerald-500 to-teal-500",
     image: "https://i.pinimg.com/1200x/23/55/87/2355876d4d8ca2d753b72aaee06f6a19.jpg",
-    description: "Optimize production and supply chain with smart manufacturing solutions powered by IoT and AI.",
   },
   {
     id: "hospitality",
     name: "Travel & Hospitality",
     icon: Plane,
+    problem: "Outdated booking systems, no loyalty programme, poor reviews",
+    solution: "Booking platforms, guest apps, CRM, review management, loyalty systems",
     color: "from-emerald-600 to-teal-600",
     image: "https://i.pinimg.com/736x/ba/18/27/ba1827c7d0547371f27c8f379188d925.jpg",
-    description: "Enhance guest experiences and streamline operations with comprehensive hospitality technology solutions.",
   },
   {
-    id: "energy",
-    name: "Energy & Utilities",
-    icon: Zap,
+    id: "real-estate",
+    name: "Real Estate",
+    icon: Building2,
+    problem: "No lead capture, poor listing management, low online presence",
+    solution: "Property listing platforms, CRM, virtual tour integration, lead nurturing automation",
     color: "from-teal-500 to-emerald-500",
-    image: "https://i.pinimg.com/736x/88/f7/c8/88f7c86f52f44f9209d0ca7df329edd5.jpg",
-    description: "Modernize energy infrastructure with smart grid solutions and sustainable energy management systems.",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFsJTIwZXN0YXRlJTIwbW9kZXJuJTIwYnVpbGRpbmclMjBhcGFydG1lbnR8ZW58MXx8fHwxNzA4OTEyNDAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+  },
+  {
+    id: "food-restaurant",
+    name: "Food & Restaurant",
+    icon: ShoppingBag,
+    problem: "Low online orders, no loyalty, poor delivery management",
+    solution: "Online ordering systems, delivery app integration, loyalty programmes, POS integration",
+    color: "from-teal-600 to-emerald-600",
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0YXVyYW50JTIwZGluaW5nJTIwbW9kZXJufGVufDF8fHx8MTcwODkxMjQwM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+  },
+  {
+    id: "logistics",
+    name: "Logistics & Supply Chain",
+    icon: Layers,
+    problem: "Route inefficiency, poor tracking, high operational costs",
+    solution: "AI route optimisation, real-time tracking, warehouse management, customer portals",
+    color: "from-emerald-500 to-teal-500",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsb2dpc3RpY3MlMjB3YXJlaG91c2UlMjBzaGlwcGluZ3xlbnwxfHx8fDE3MDg5MTI0MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
   },
   {
     id: "insurance",
     name: "Insurance",
     icon: Shield,
-    color: "from-teal-600 to-emerald-600",
-    image: "https://images.unsplash.com/photo-1681505526188-b05e68c77582?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnN1cmFuY2UlMjBidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMGNvbnRyYWN0fGVufDF8fHx8MTc3MDg5MjQwMnww&ixlib=rb-4.1.0&q=80&w=1080",
-    description: "Modernize insurance operations with digital solutions that improve customer service and streamline claims processing.",
-  },
-  {
-    id: "media",
-    name: "Communications & Media",
-    icon: Radio,
-    color: "from-emerald-500 to-teal-500",
-    image: "https://i.pinimg.com/736x/87/10/05/871005a54223842c4b891d8864b67acb.jpg",
-    description: "Transform content delivery and audience engagement with modern media technology solutions.",
-  },
-  {
-    id: "capital-markets",
-    name: "Capital Markets",
-    icon: TrendingUp,
+    problem: "Complex claims, low digital adoption, poor customer service",
+    solution: "Policy management portals, claims automation, chatbot support, mobile apps",
     color: "from-emerald-600 to-teal-600",
-    image: "https://i.pinimg.com/1200x/0c/6d/01/0c6d0174972759d1943df78742b06f71.jpg",
-    description: "Empower trading and investment with high-performance platforms and real-time analytics solutions.",
-  },
-  {
-    id: "consumer-goods",
-    name: "Consumer Goods",
-    icon: ShoppingBag,
-    color: "from-teal-500 to-emerald-500",
-    image: "https://i.pinimg.com/1200x/5f/45/9c/5f459cacef65b53798c4d6fc4e8e505d.jpg",
-    description: "Optimize supply chain and enhance customer engagement with integrated consumer goods solutions.",
-  },
-  {
-    id: "public-services",
-    name: "public-services",
-    icon: Landmark,
-    color: "from-teal-600 to-emerald-600",
-    image: "https://images.unsplash.com/photo-1740441155424-c1a47ada3eb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb3Zlcm5tZW50JTIwcHVibGljJTIwc2VydmljZXMlMjBjaXR5JTIwYWRtaW5pc3RyYXRpb258ZW58MXx8fHwxNzcwODkyNDAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    description: "Modernize government services with citizen-centric digital solutions that improve accessibility and efficiency.",
+    image: "https://images.unsplash.com/photo-1681505526188-b05e68c77582?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnN1cmFuY2UlMjBidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMGNvbnRyYWN0fGVufDF8fHx8MTc3MDg5MjQwMnww&ixlib=rb-4.1.0&q=80&w=1080",
   },
 ];
 
@@ -167,7 +161,7 @@ export function SolutionsPage() {
             alt="Solutions"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-teal-900/85 to-slate-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/95 via-teal-900/90 to-slate-900/95"></div>
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 h-full relative z-10 flex items-center">
@@ -179,66 +173,78 @@ export function SolutionsPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6">
               <Sparkles size={16} className="text-emerald-400" />
-              <span className="text-sm font-semibold text-white tracking-wide">
-                INDUSTRY SOLUTIONS
+              <span className="text-sm font-semibold text-white tracking-wide uppercase">
+                Industry Expertise
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-              Our Solutions
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Industry-Specific <span className="text-emerald-400">Digital Solutions</span> for Every Sector
             </h1>
-            <p className="text-2xl text-white/90 leading-relaxed">
-              Tailored technology solutions designed for your industry's unique challenges and opportunities
+            <p className="text-xl md:text-2xl text-white/95 leading-relaxed font-medium">
+              We do not build generic solutions. Every industry has its own rules, regulations, customer behaviour, and operational challenges. Our solutions are built with that context from day one.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Industry Solutions - MOVED TO FIRST */}
-      <section className="py-20 bg-white">
+      {/* Industry Solutions - GRID UPDATE */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Industry-Specific <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Solutions</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore how we transform businesses across 12+ industries with tailored technology solutions
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {industrySolutions.map((industry, index) => (
               <motion.div
                 key={industry.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Link to={`/industries/${industry.id}`} className="block group">
-                  <div className="relative h-64 rounded-2xl overflow-hidden shadow-lg">
-                    <ImageWithFallback
-                      src={industry.image}
-                      alt={industry.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-70 group-hover:opacity-80 transition-opacity duration-300`}></div>
+                <Link to={`/industries/${industry.id}`} className="block h-full transition-transform hover:-translate-y-2 duration-500">
+                  <div className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 flex flex-col h-full hover:border-emerald-500">
+                    <div className="relative h-44 overflow-hidden">
+                      <ImageWithFallback
+                        src={industry.image}
+                        alt={industry.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-40 group-hover:opacity-20 transition-opacity duration-500`}></div>
+                      <div className="absolute top-4 left-4 w-12 h-12 bg-white rounded-xl shadow-xl flex items-center justify-center text-emerald-600">
+                        <industry.icon size={24} />
+                      </div>
+                    </div>
                     
-                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                      <div className="transform group-hover:translate-y-[-8px] transition-transform duration-300">
-                        <h3 className="text-2xl font-bold text-white mb-2">{industry.name}</h3>
-                        <p className="text-white/90 text-sm leading-relaxed mb-3">
-                          {industry.description}
-                        </p>
-                        <div className="flex items-center gap-2 text-white font-semibold">
-                          <span>Learn More</span>
-                          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors line-clamp-1">
+                        {industry.name}
+                      </h3>
+                      
+                      <div className="space-y-4 flex-grow">
+                        <div>
+                          <div className="text-[10px] font-black text-rose-500 uppercase tracking-widest mb-1.5 flex items-center gap-2">
+                            <X size={12} />
+                            Problem We Solve
+                          </div>
+                          <p className="text-gray-600 text-xs leading-relaxed font-medium line-clamp-2">
+                            {industry.problem}
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <div className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-1.5 flex items-center gap-2">
+                            <CheckCircle2 size={12} />
+                            Solution We Deliver
+                          </div>
+                          <p className="text-gray-900 text-xs leading-relaxed font-bold line-clamp-2">
+                            {industry.solution}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-4 border-t border-gray-100">
+                        <div className="flex items-center justify-between text-emerald-600 text-sm font-bold group/btn">
+                          <span>Explore</span>
+                          <ArrowRight size={18} className="group-hover/btn:translate-x-2 transition-transform duration-300" />
                         </div>
                       </div>
                     </div>
@@ -247,7 +253,6 @@ export function SolutionsPage() {
               </motion.div>
             ))}
           </div>
-          
         </div>
       </section>
 

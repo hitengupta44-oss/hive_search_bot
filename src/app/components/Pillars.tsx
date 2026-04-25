@@ -1,70 +1,83 @@
 import { motion } from "motion/react";
-import { Users, Layers, Shield } from "lucide-react";
+import { Users, Zap, Award } from "lucide-react";
 
 const pillars = [
   {
     icon: Users,
     title: "TALENT",
-    description: "Skilled teams delivering measurable outcomes through expertise and innovation.",
+    subtitle: "Skilled People, Measurable Outcomes",
+    desc: "Our team brings years of real-world experience in web development, mobile apps, AI, digital marketing, and business strategy. We hire for passion as much as skill.",
+    color: "emerald"
   },
   {
-    icon: Layers,
+    icon: Zap,
     title: "TAILORED",
-    description: "Custom-built solutions designed to solve real business challenges effectively.",
+    subtitle: "Built for Your Business, Not a Template",
+    desc: "We do not believe in copy-paste solutions. Every project starts with understanding your business, your customers, and your goals — then we build from there.",
+    color: "teal"
   },
   {
-    icon: Shield,
+    icon: Award,
     title: "TRUST",
-    description: "Transparent processes and reliable delivery that build long-term confidence.",
-  },
+    subtitle: "Transparent, Reliable, Long-Term",
+    desc: "We communicate clearly, deliver on time, and never hide behind fine print. Over 99% of our clients return for their next project — and that says everything.",
+    color: "cyan"
+  }
 ];
 
 export function Pillars() {
   return (
-    <section id="pillars" className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30">
+    <section id="pillars" className="py-5 md:py-10 lg:py-15 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">3T Pillars</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">
+            Our 3T <span className="text-emerald-600">Pillars</span>
           </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+          <p className="text-xl text-gray-500 font-medium max-w-3xl mx-auto">
             Talent. Tailored. Trust — The foundation of everything we do
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-          {pillars.map((pillar, index) => {
-            const Icon = pillar.icon;
-            return (
-              <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mb-4 md:mb-6 mx-auto shadow-lg hover:scale-110 transition-transform duration-300">
-                  <Icon size={28} className="text-white md:hidden" strokeWidth={2.5} />
-                  <Icon size={36} className="text-white hidden md:block" strokeWidth={2.5} />
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {pillars.map((pillar, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className={`bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 border-t-4 ${
+                pillar.color === 'emerald' ? 'border-emerald-500' : 
+                pillar.color === 'teal' ? 'border-teal-500' : 'border-cyan-500'
+              } group`}
+            >
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-transform group-hover:scale-110 duration-300 ${
+                  pillar.color === 'emerald' ? 'bg-emerald-50 text-emerald-600' : 
+                  pillar.color === 'teal' ? 'bg-teal-50 text-teal-600' : 'bg-cyan-50 text-cyan-600'
+                }`}>
+                  <pillar.icon size={32} />
                 </div>
-
-                <h4 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
-                  {pillar.title}
-                </h4>
-
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed px-2">
-                  {pillar.description}
+                
+                <h3 className="text-2xl font-black text-gray-900 mb-4 tracking-widest">{pillar.title}</h3>
+                
+                <p className={`font-bold mb-4 tracking-tight text-lg ${
+                  pillar.color === 'emerald' ? 'text-emerald-600' : 
+                  pillar.color === 'teal' ? 'text-teal-600' : 'text-cyan-600'
+                }`}>
+                  {pillar.subtitle}
                 </p>
-              </motion.div>
-            );
-          })}
+                
+                <p className="text-gray-500 font-medium leading-relaxed text-base">
+                  {pillar.desc}
+                </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

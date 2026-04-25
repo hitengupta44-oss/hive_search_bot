@@ -17,8 +17,13 @@ import { EcommercePage } from "./pages/services/EcommercePage";
 import { UIUXPage } from "./pages/services/UIUXPage";
 import { CloudDevOpsPage } from "./pages/services/CloudDevOpsPage";
 import { IndustryDetailPage } from "./pages/industries/IndustryDetailPage";
+import { BlogPage } from "./pages/BlogPage";
+import { PricingPage } from "./pages/PricingPage";
+import { CareersPage } from "./pages/CareersPage";
+import { TermsPage } from "./pages/TermsPage";
+import { PrivacyPage } from "./pages/PrivacyPage";
+import { ThankYouPage } from "./pages/ThankYouPage";
 import { NotFound } from "./components/NotFound";
-// import { NotFoundPage} from "./components/NotFound";
 
 // Wrapper component jo scroll ko smooth banayega
 const SmoothScrollWrapper = () => {
@@ -107,6 +112,30 @@ export const router = createBrowserRouter([
       {
         path: "/case-studies",
         element: <CaseStudiesPage />,
+      },
+      {
+        path: "/blog",
+        element: <BlogPage />,
+      },
+      {
+        path: "/pricing",
+        element: <PricingPage />,
+      },
+      {
+        path: "/careers",
+        element: <CareersPage />,
+      },
+      {
+        path: "/terms",
+        element: <TermsPage />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPage />,
+      },
+      {
+        path: "/thank-you",
+        element: <ThankYouPage />,
       },
 
       {

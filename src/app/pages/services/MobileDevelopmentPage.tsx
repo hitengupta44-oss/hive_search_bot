@@ -6,43 +6,60 @@ import {
   Award,
   Zap,
   Shield,
+  ArrowLeft,
+  Sparkles,
+  Settings,
+  Layers,
+  Rocket,
+  Code
 } from "lucide-react";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet-async";
+
+const techLogos: Record<string, string> = {
+  "React Native": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Flutter": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+  "Swift": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg",
+  "Kotlin": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg",
+  "Firebase": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  "REST APIs": "https://www.vectorlogo.zone/logos/json/json-icon.svg",
+  "GraphQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+  "Android": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
+  "iOS": "https://www.vectorlogo.zone/logos/apple/apple-icon.svg"
+};
 
 export function MobileDevelopmentPage() {
   const features = [
-    "Native & Hybrid Apps",
-    "UI/UX for Mobile",
-    "App Store Deployment",
-    "Push Notifications & APIs",
-    "Ongoing Maintenance",
-    "In-App Purchases Integration",
-    "Offline Functionality",
-    "Real-time Sync",
+    { title: "Native iOS & Android Apps", desc: "High-performance applications built specifically for each platform." },
+    { title: "Cross-Platform Solutions", desc: "Unified codebases using Flutter & React Native for faster time-to-market." },
+    { title: "UI/UX for Mobile", desc: "Intuitive, touch-optimized user interfaces that users love to navigate." },
+    { title: "App Store Deployment", desc: "Full assistance in publishing and optimizing your app on Play Store & App Store." },
+    { title: "Push Notifications", desc: "Powerful re-engagement strategies with integrated cloud messaging." },
+    { title: "Offline Functionality", desc: "Apps that work perfectly even without an active internet connection." }
   ];
 
   const benefits = [
     {
       icon: Zap,
       title: "Native Performance",
-      description: "Blazing fast apps with smooth animations",
+      description: "Blazing fast speeds and smooth 60fps animations.",
     },
     {
       icon: Shield,
       title: "Secure Data",
-      description: "Enterprise-level security and encryption",
+      description: "Enterprise-grade encryption for local and cloud storage.",
     },
     {
       icon: Smartphone,
-      title: "Cross-Platform",
-      description: "Works on both iOS and Android devices",
+      title: "Seamless Experience",
+      description: "Responsive layouts that fit every mobile screen perfectly.",
     },
     {
       icon: Award,
-      title: "App Store Ready",
-      description: "Optimized for app store approval",
+      title: "Store Ready",
+      description: "Complete compliance with Apple and Google design guidelines.",
     },
   ];
 
@@ -51,252 +68,193 @@ export function MobileDevelopmentPage() {
   const processSteps = [
     {
       number: "01",
-      title: "Research & Strategy",
-      description: "Understanding your app concept and target users",
+      title: "Blueprinting",
+      description: "Brainstorming and freezing the features and app logic.",
+      icon: Settings
     },
     {
       number: "02",
-      title: "UI/UX Design",
-      description: "Creating intuitive and beautiful mobile interfaces",
+      title: "UI/UX Crafting",
+      description: "Designing pixel-perfect mobile mocks and user journeys.",
+      icon: Layers
     },
     {
       number: "03",
-      title: "Development",
-      description: "Building your app with best practices and testing",
+      title: "Core Build",
+      description: "Developing the frontend and backend with agile sprints.",
+      icon: Code
     },
     {
       number: "04",
-      title: "Launch & Support",
-      description: "App store deployment and ongoing maintenance",
+      title: "Launch & Meta",
+      description: "Deploying to stores and monitoring initial performance.",
+      icon: Rocket
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-50">
       <Header />
 
-      {/* Hero Section - Emerald Theme Applied */}
-      <section className="relative h-[600px] overflow-hidden mt-20">
-        <img
-          src="https://images.unsplash.com/photo-1730818874932-5b0f5211dc87?q=80&w=1080"
-          alt="Mobile Development"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Blue to Emerald Gradient Change */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 via-emerald-800/85 to-teal-900/90"></div>
+      {/* Hero Section */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1920" 
+            alt="Mobile Development"
+            className="w-full h-full object-cover scale-105 animate-slow-zoom"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/70 to-emerald-950/40"></div>
+        </div>
 
-        <div className="container mx-auto px-4 lg:px-8 h-full relative z-10 flex items-center">
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl text-white"
+            className="max-w-4xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-6">
-              <Smartphone size={16} className="text-emerald-400" />
-              <span className="text-sm font-semibold tracking-wide">DEVELOPMENT SERVICE</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 rounded-full mb-8 text-emerald-400">
+              <Sparkles size={14} />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em]">
+                Mobile First Excellence
+              </span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold mb-6">
-              Mobile App Development
-            </h1>
-            <p className="text-2xl text-white/90 leading-relaxed mb-8">
-              Android & iOS applications built for performance, usability & scalability. Build powerful mobile experiences that engage users.
-            </p>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tighter leading-none"
+            >
+              Native & Hybrid <br/>
+              <span className="relative inline-block mt-2">
+                <span className="text-emerald-500">Mobile Apps</span>
+                <span className="absolute -bottom-2 left-0 w-full h-3 bg-emerald-500/20 rounded-full -z-10"></span>
+                <span className="absolute -bottom-1 left-0 w-1/2 h-1 bg-emerald-500 rounded-full"></span>
+              </span>
+            </motion.h1>
 
-            <Link to="/contact">
-              <button className="px-8 py-4 bg-white text-emerald-900 rounded-full font-semibold text-lg hover:bg-emerald-50 transition-all duration-300 hover:shadow-xl hover:scale-105 inline-flex items-center gap-2">
-                Get Started
-                <ArrowRight size={20} />
-              </button>
-            </Link>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-200 mt-6 leading-relaxed font-bold opacity-90 max-w-2xl"
+            >
+              Android & iOS applications built for speed, simplicity, and global scale. Put your business in the palm of your customer's hand.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-12 flex flex-wrap gap-4"
+            >
+              <Link to="/contact" className="px-8 py-4 bg-emerald-600 text-white rounded-xl font-black hover:bg-emerald-500 transition-all shadow-xl flex items-center gap-2">
+                Consult Mobile Strategy <ArrowRight size={18} />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Section - Emerald Theme Applied */}
-      <section className="py-24 bg-white">
+      {/* Services Grid */}
+      <section className="py-24 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Offer</span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Complete mobile app development services for iOS and Android
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {features.map((feature, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="flex items-start gap-4 p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border border-gray-100 hover:border-emerald-300 hover:shadow-lg transition-all duration-300"
-                >
-                  <CheckCircle2
-                    size={24}
-                    className="flex-shrink-0 text-emerald-500 mt-1"
-                    strokeWidth={2.5}
-                  />
-                  <span className="text-lg text-gray-700 font-medium">{feature}</span>
-                </motion.div>
-              ))}
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight">
+              App <span className="text-emerald-600">Capabilities</span>
+            </h2>
+            <div className="w-20 h-1.5 bg-emerald-600 mx-auto mt-4 rounded-full"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="p-8 bg-white rounded-[2rem] border border-gray-100 shadow-xl hover:shadow-2xl hover:border-emerald-200 transition-all group"
+              >
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                  <Smartphone size={24} />
+                </div>
+                <h3 className="text-xl font-black text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-600 font-medium leading-relaxed">{feature.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section - Emerald Theme Applied */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 to-emerald-50/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Our Services</span>
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, idx) => (
+      {/* Process Section */}
+      <section className="py-24 bg-gray-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+          <h2 className="text-3xl md:text-5xl text-white mb-16">The App <span className="text-emerald-500">Journey</span></h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {processSteps.map((step, idx) => {
+              const Icon = step.icon;
+              return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="text-center"
+                  whileHover={{ scale: 1.05 }}
+                  className="bg-gray-800/50 backdrop-blur-md p-8 rounded-3xl border border-gray-700 flex flex-col items-center group"
                 >
-                  <div className="inline-flex p-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 mb-4 shadow-lg shadow-emerald-200">
-                    <benefit.icon size={32} className="text-white" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <div className="text-5xl font-black text-emerald-500/20 mb-4 group-hover:text-emerald-500 transition-colors">{step.number}</div>
+                  <Icon className="text-emerald-400 mb-6" size={32} />
+                  <h3 className="text-xl text-white mb-3">{step.title}</h3>
+                  <p className="text-gray-400 text-sm font-medium">{step.description}</p>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Process Section - Emerald Theme Applied */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Process</span>
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {processSteps.map((step, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="relative"
-                >
-                  <div className="text-7xl font-bold text-emerald-100 mb-4">{step.number}</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section - Emerald Theme Applied */}
-      <section className="py-24 bg-gradient-to-br from-emerald-900 to-teal-900 text-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Technologies We Use
-              </h2>
-              <p className="text-xl text-white/80 mb-12">
-                Cutting-edge tools and frameworks for high-performance apps
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4">
-                {technologies.map((tech, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300"
-                  >
-                    {tech}
-                  </motion.div>
-                ))}
+      {/* Tech Stack Section */}
+      <section className="py-24 bg-white relative">
+        <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl mx-auto">
+          <h2 className="text-3xl font-black text-gray-900 mb-12 tracking-tight uppercase">Mobile Tech Stack</h2>
+          <div className="flex flex-wrap justify-center gap-6 mb-20">
+            {technologies.map((tech) => (
+              <div key={tech} className="flex items-center gap-3 px-6 py-3 bg-white text-gray-700 rounded-2xl font-bold text-sm border border-gray-100 hover:border-emerald-500 hover:text-emerald-700 transition-all shadow-sm group">
+                {techLogos[tech] && (
+                  <img src={techLogos[tech]} alt={tech} className="w-6 h-6 object-contain group-hover:scale-110 transition-transform" />
+                )}
+                {tech}
               </div>
-            </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section - Emerald Theme Applied */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <div className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-3xl p-12 text-white shadow-2xl shadow-emerald-100">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Ready to Build Your Mobile App?
-              </h2>
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Let's discuss how we can help transform your business with professional mobile app development services
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
-                  <button className="px-8 py-4 bg-white text-emerald-900 rounded-full font-semibold text-lg hover:bg-emerald-50 transition-all duration-300 hover:shadow-xl hover:scale-105 inline-flex items-center gap-2">
-                    Contact Us Today
-                    <ArrowRight size={20} />
-                  </button>
-                </Link>
-                <Link to="/services">
-                  <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300">
-                    View All Services
-                  </button>
-                </Link>
+          {/* Slim CTA Strip */}
+          <div className="bg-emerald-600 p-8 md:p-12 rounded-3xl text-white shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left">
+                <h3 className="text-2xl md:text-3xl font-black mb-2 leading-tight">Build the next big thing on mobile</h3>
+                <p className="text-emerald-50 font-medium opacity-90">Our iOS & Android experts are ready to build your vision.</p>
               </div>
+              <Link to="/contact" className="px-8 py-4 bg-white text-emerald-700 rounded-xl font-black text-sm hover:scale-105 transition-transform shadow-lg whitespace-nowrap">
+                Start My App
+              </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <Footer />
+
+      <style>{`
+        @keyframes slow-zoom {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+        .animate-slow-zoom {
+          animation: slow-zoom 20s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }

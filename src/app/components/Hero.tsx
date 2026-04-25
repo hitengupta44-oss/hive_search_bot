@@ -57,13 +57,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-gray-900"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900"
             >
               Results-Driven{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500 block mt-1 sm:mt-2">
-                Digital Marketing
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500 block">
+                Digital Solutions
               </span>{" "}
-              Experts
+              for Indian Businesses
             </motion.h1>
 
             {/* Description */}
@@ -71,32 +71,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl"
             >
-              HiveRift empowers brands with ROI-focused Digital Marketing, SEO, and Web Development services. We combine strategy, creativity, and technology to deliver measurable business growth.
+              HiveRift helps startups, SMEs, and enterprises grow faster with professional websites, powerful digital marketing, and custom software — all built in India, for India.
             </motion.p>
-
-            {/* Services Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3"
-            >
-              {[
-                "Website Development",
-                "Digital Marketing",
-                "SEO & Content Strategy",
-                "Tech SEO & Strategy"
-              ].map((service, idx) => (
-                <div key={idx} className="flex items-center gap-2 sm:gap-3 bg-white border border-gray-200 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 size={16} className="sm:w-[18px] sm:h-[18px] text-white" />
-                  </div>
-                  <span className="text-xs sm:text-sm md:text-base font-medium text-gray-800">{service}</span>
-                </div>
-              ))}
-            </motion.div>
 
             {/* CTA Section */}
             <motion.div
@@ -105,47 +83,52 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2 sm:pt-4"
             >
-              {/* Primary CTA */}
               <Button
-                asChild // Ye important hai taaki Button Link ki tarah behave kare
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-6 py-5 sm:px-8 sm:py-6 text-base sm:text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 group w-full sm:w-auto"
+                asChild
+                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-6 text-lg font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 group w-full sm:w-auto"
               >
-                <Link to="/contact"> {/* Ab ye har page se contact par bhej dega */}
-                  <Phone className="mr-2" size={18} />
+                <Link to="/contact">
                   Get Free Consultation
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </Link>
               </Button>
 
-              {/* Secondary CTA */}
               <Link to="/case-studies" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 px-6 py-5 sm:px-8 sm:py-6 text-base sm:text-lg font-semibold rounded-full transition-all w-full sm:w-auto"
+                  className="border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-bold rounded-xl transition-all w-full sm:w-auto"
                 >
-                  View Case Studies
+                  View Our Work
                 </Button>
               </Link>
             </motion.div>
 
-            {/* Client Avatars */}
+            {/* Hero Trust Bar - Redesigned for Premium Look */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex items-center gap-3"
+              transition={{ delay: 1, duration: 0.6 }}
+              className="grid grid-cols-2 lg:grid-cols-4 items-center gap-3 sm:gap-4 pt-10"
             >
-              <div className="flex -space-x-3">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-md">
-                    <Users size={18} className="sm:w-5 sm:h-5 text-white" />
+              {[
+                { value: "387+", label: "Happy Clients", icon: Users },
+                { value: "98%", label: "Success Rate", icon: Award },
+                { value: "5+", label: "Years Exp.", icon: TrendingUp },
+                { value: "10+", label: "Countries", icon: BarChart3 }
+              ].map((item, i) => (
+                <div 
+                  key={i} 
+                  className="flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-md border border-emerald-100 p-3 sm:px-5 sm:py-3 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-50 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <item.icon size={16} className="text-emerald-600 sm:w-5 sm:h-5" />
                   </div>
-                ))}
-              </div>
-              <div className="text-left">
-                <div className="text-xs sm:text-sm font-semibold text-gray-900">387+ Happy Clients</div>
-                <div className="text-xs text-gray-500">& Counting</div>
-              </div>
+                  <div>
+                    <div className="text-base sm:text-xl font-black text-gray-900 leading-none mb-0.5">{item.value}</div>
+                    <div className="text-[8px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest">{item.label}</div>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
@@ -158,91 +141,44 @@ export function Hero() {
           >
             {/* Top: Image Grid */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {/* Left Image - Professional Woman */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative h-[180px] sm:h-[240px] lg:h-[320px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl"
-              >
+              <motion.div className="relative h-[240px] lg:h-[320px] rounded-3xl overflow-hidden shadow-xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1758876202014-6b2062bed4e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzc3dvbWFuJTIwc21pbGluZyUyMG9mZmljZXxlbnwxfHx8fDE3NzA5MDE2NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Professional Business Woman"
+                  src="https://images.unsplash.com/photo-1758876202014-6b2062bed4e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzc3dvbWFuJTIwc21pbGluZyUyMG9mZmljZXxlbnwxfHx8fDE3NzA5MDE2NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="Indian Business Leader"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
-
-              {/* Right Image - Team Collaboration */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative h-[180px] sm:h-[240px] lg:h-[320px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl"
-              >
+              <motion.div className="relative h-[240px] lg:h-[320px] rounded-3xl overflow-hidden shadow-xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1739298061707-cefee19941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9uJTIwb2ZmaWNlJTIwbWVldGluZ3xlbnwxfHx8fDE3NzA5MDE2NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Team Collaboration"
+                  src="https://images.unsplash.com/photo-1739298061707-cefee19941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9uJTIwb2ZmaWNlJTIwbWVldGluZ3xlbnwxfHx8fDE3NzA5MDE2NTd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  alt="HiveRift Team"
                   className="w-full h-full object-cover"
                 />
-
-                {/* Top Rated Badge */}
-                <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-white rounded-full shadow-lg px-2.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-1.5 sm:gap-2">
-                  <Award className="text-amber-500" size={14} />
-                  <span className="text-xs sm:text-sm font-semibold text-gray-800">Top rated company</span>
-                </div>
               </motion.div>
             </div>
 
-            {/* Bottom: Stats Card */}
+            {/* Stats Card */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl sm:shadow-2xl relative overflow-hidden"
+              className="bg-gray-900 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl relative overflow-hidden"
             >
-              {/* Subtle Pattern Overlay */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                  backgroundSize: '40px 40px'
-                }}></div>
-              </div>
-
-              <div className="relative z-10 flex items-center justify-between gap-4 sm:gap-6 lg:gap-8">
-                {/* Left: Stats */}
-                <div className="flex-1 space-y-4 sm:space-y-6 lg:space-y-8">
-                  {/* Stat 1 */}
-                  <div className="space-y-1 sm:space-y-2">
-                    <div className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight">125%</div>
-                    <div className="text-white/95 text-sm sm:text-base lg:text-xl font-medium leading-tight">Increase in reach for clients</div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+              
+              <div className="relative z-10 flex items-center justify-between gap-8">
+                <div className="space-y-8">
+                  <div className="space-y-1">
+                    <div className="text-5xl lg:text-7xl font-black text-white">125%</div>
+                    <div className="text-emerald-400 text-sm lg:text-lg font-bold uppercase tracking-widest">Reach Growth</div>
                   </div>
-
-                  {/* Stat 2 */}
-                  <div className="space-y-1 sm:space-y-2">
-                    <div className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight">280%</div>
-                    <div className="text-white/95 text-sm sm:text-base lg:text-xl font-medium leading-tight">Growth in digital presence</div>
+                  <div className="space-y-1">
+                    <div className="text-5xl lg:text-7xl font-black text-white">280%</div>
+                    <div className="text-emerald-400 text-sm lg:text-lg font-bold uppercase tracking-widest">Presence Growth</div>
                   </div>
                 </div>
-
-                {/* Right: Circular Badge */}
                 <div className="flex-shrink-0">
-                  <motion.div
-                    className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-44 lg:h-44"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {/* White Circle Background */}
-                    <div className="absolute inset-0 bg-white rounded-full shadow-2xl"></div>
-
-                    {/* Inner Content */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <div className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">98%</div>
-                      <div className="text-xs sm:text-sm lg:text-base text-gray-700 font-semibold mt-1 sm:mt-2">Success rate</div>
-                    </div>
-
-                    {/* Decorative Ring */}
-                    <div className="absolute inset-2 sm:inset-3 border-2 border-emerald-100 rounded-full"></div>
-                  </motion.div>
+                  <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full flex flex-col items-center justify-center p-4 text-center ring-8 ring-emerald-500/20">
+                    <div className="text-4xl lg:text-6xl font-black text-gray-900">98%</div>
+                    <div className="text-[10px] lg:text-xs font-black text-emerald-600 uppercase tracking-tighter">Success Rate</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
