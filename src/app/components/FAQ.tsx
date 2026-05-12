@@ -1,105 +1,91 @@
+"use client";
+
 import { motion } from "motion/react";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "What services does HiveRift offer?",
-    answer: "We offer web development, mobile app development, AI/ML solutions, digital marketing, UI/UX design, cloud solutions, and more across 12+ industries.",
+    question: "Is the website really free?",
+    answer: "Yes, we offer a free high-converting website with our selected digital marketing plans. Our goal is to help you build a strong online presence from day one."
   },
   {
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary based on complexity. A standard website takes 4-8 weeks, while mobile apps can take 8-16 weeks. We provide detailed timelines during consultation.",
+    question: "Will I own the website?",
+    answer: "Absolutely! You will have 100% ownership of the website, domain, and content. We believe in transparency and empowering our clients."
   },
   {
-    question: "Do you work internationally?",
-    answer: "Yes! We proudly serve clients worldwide with offices in India, Canada, and Michigan, USA. We work across all time zones and have experience delivering projects globally.",
+    question: "How long does SEO take to work?",
+    answer: "SEO is a long-term strategy. Typically, it takes 3-6 months to see significant results, though some improvements can be seen much sooner depending on competition."
   },
   {
-    question: "What is your minimum project budget?",
-    answer: "Our minimum project budget starts from $1,500 for basic websites. For custom software, mobile apps, and enterprise solutions, budgets typically range from $5,000 to $50,000+ depending on scope and complexity.",
+    question: "Can I get leads quickly?",
+    answer: "Yes! While SEO takes time, we use paid advertising (Google & Meta Ads) to generate targeted leads and sales within the first few days of your campaign."
   },
   {
-    question: "What technologies do you use?",
-    answer: "We use modern, industry-standard technologies including React, Node.js, Python, React Native, Flutter, AWS, Azure, Google Cloud, TensorFlow, and more. We select the best tech stack based on your project requirements.",
+    question: "What do I need to get started?",
+    answer: "We just need basic information about your business, your goals, and any existing brand assets. Our team will handle the rest of the research and execution."
   },
   {
-    question: "Do you sign NDA (Non-Disclosure Agreements)?",
-    answer: "Absolutely! We understand the importance of confidentiality. We are happy to sign NDAs before discussing your project details to ensure complete security and privacy.",
-  },
-  {
-    question: "Do you provide AMC (Annual Maintenance Contract)?",
-    answer: "Yes! We offer comprehensive AMC packages that include regular updates, security patches, bug fixes, performance monitoring, technical support, and feature enhancements to keep your solution running smoothly.",
-  },
-  {
-    question: "What industries do you serve?",
-    answer: "We serve 12+ industries including Healthcare, Finance, E-Commerce, Education, Real Estate, Travel, Manufacturing, Media & Entertainment, and more with tailored digital solutions.",
-  },
+    question: "Do you work with small businesses?",
+    answer: "Yes, we specialize in helping startups and small-to-medium enterprises (SMEs) scale their business with result-driven digital strategies."
+  }
 ];
 
-export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQProps {
+  items?: FAQItem[];
+}
+
+export function FAQ({ items }: FAQProps) {
+  const displayFaqs = items || faqs;
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-white">
+    <section className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10 md:mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4 px-4">
-            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Questions</span>
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Find answers to common questions about our services
-          </p>
-        </motion.div>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">Frequently Asked Questions</h2>
+        </div>
 
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-6 max-w-6xl mx-auto">
+          {displayFaqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="mb-3 md:mb-4"
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full bg-white border-2 border-gray-200 rounded-lg md:rounded-xl p-4 md:p-6 text-left hover:border-emerald-500 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 pr-3 md:pr-4">
-                    {faq.question}
-                  </h3>
-                  <ChevronDown
-                    size={20}
-                    className={`text-emerald-600 transition-transform duration-300 flex-shrink-0 md:hidden ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
-                  <ChevronDown
-                    size={24}
-                    className={`text-emerald-600 transition-transform duration-300 flex-shrink-0 hidden md:block ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-                
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === index ? "max-h-96 mt-3 md:mt-4" : "max-h-0"
+              <div
+                className={`border-2 transition-all duration-300 rounded-2xl overflow-hidden ${openIndex === index ? "border-emerald-600 bg-emerald-50/20" : "border-gray-100 bg-white hover:border-emerald-200"
                   }`}
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full p-6 text-left flex items-center justify-between gap-4"
                 >
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  <span className={`text-base font-black transition-colors ${openIndex === index ? "text-emerald-700" : "text-gray-900"}`}>
+                    {faq.question}
+                  </span>
+                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${openIndex === index ? "bg-emerald-600 text-white rotate-180" : "bg-gray-50 text-emerald-600"
+                    }`}>
+                    {openIndex === index ? <Minus size={18} /> : <Plus size={18} />}
+                  </div>
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${openIndex === index ? "max-h-96" : "max-h-0"
+                    }`}
+                >
+                  <div className="px-6 pb-6 text-sm font-bold text-gray-500 leading-relaxed">
                     {faq.answer}
-                  </p>
+                  </div>
                 </div>
-              </button>
+              </div>
             </motion.div>
           ))}
         </div>

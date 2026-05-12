@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from "motion/react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { useState, useRef } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 
 const industries = [
   {
@@ -107,7 +109,7 @@ export function EnhancedIndustries() {
                 transition={{ delay: index * 0.1 }}
                 className="min-w-[85vw] md:min-w-[45vw] lg:min-w-[calc(25%-18px)] snap-center group relative overflow-hidden rounded-[2rem] bg-white shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 h-[380px] md:h-[450px]"
               >
-                <Link to={`/industries/${item.slug}`} className="block h-full w-full relative">
+                <Link href={`/industries/${item.slug}`} className="block h-full w-full relative">
                   <img
                     src={item.image}
                     alt={item.name}

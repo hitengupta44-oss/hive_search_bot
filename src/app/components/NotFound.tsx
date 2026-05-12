@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Home, ArrowLeft, AlertCircle } from "lucide-react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -37,7 +39,7 @@ export function NotFound() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/">
+              <Link href="/">
                 <button className="px-8 py-4 bg-emerald-600 text-white rounded-xl font-bold flex items-center gap-2 hover:bg-emerald-700 hover:shadow-xl hover:shadow-emerald-200 transition-all active:scale-95 group">
                   <Home size={20} />
                   Back to Home

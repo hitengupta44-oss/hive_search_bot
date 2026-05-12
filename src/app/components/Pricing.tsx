@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Check, Info } from "lucide-react";
 import { useState } from "react";
@@ -6,18 +8,18 @@ import { LeadPopup } from "./LeadPopup";
 const websitePricing = [
   {
     title: "Starter",
-    price: 14999,
-    gst: 2700,
-    total: 17699,
+    price: 44999,
+    gst: 8099,
+    total: 53098,
     description: "Local shops, solo founders",
     features: ["Up to 5 Pages", "Template-Based Website", "Mobile Optimisation", "Basic SEO Setup", "1 Month Support", "2 Rounds Revisions"],
     popular: false
   },
   {
     title: "Business Pro",
-    price: 34999,
-    gst: 6300,
-    total: 41299,
+    price: 59999,
+    gst:10799,
+    total: 70798,
     description: "Startups, SMEs",
     features: ["Up to 15 Pages", "Custom Design", "Mobile Optimisation", "Advanced SEO Setup", "WordPress Integration", "3 Months Support", "5 Rounds Revisions"],
     popular: true,
@@ -25,11 +27,11 @@ const websitePricing = [
   },
   {
     title: "Growth",
-    price: 59999,
-    gst: 10800,
-    total: 70799,
+    price: 149999,
+    gst: 26999,
+    total: 176998,
     description: "Growing companies",
-    features: ["Up to 30 Pages", "Custom + CMS", "Full Technical SEO", "E-commerce Ready", "Headless CMS Option", "6 Months Support", "Unlimited Revisions"],
+    features:["Up to 30 Pages", "Custom + CMS", "Full Technical SEO", "E-commerce Ready", "Headless CMS Option", "6 Months Support", "Unlimited Revisions"],
     popular: false
   }
 ];

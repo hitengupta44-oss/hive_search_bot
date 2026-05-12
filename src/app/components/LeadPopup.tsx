@@ -1,8 +1,11 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { X, Send, Sparkles, CheckCircle2 } from "lucide-react";
 import Swal from "sweetalert2";
+import { submitContactForm } from "@/app/actions/contactActions";
 
 interface LeadPopupProps {
   isOpen: boolean;
@@ -12,7 +15,7 @@ interface LeadPopupProps {
 
 export function LeadPopup({ isOpen, onClose, selectedPlan }: LeadPopupProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -67,16 +70,11 @@ export function LeadPopup({ isOpen, onClose, selectedPlan }: LeadPopupProps) {
       data.append("service", formData.service);
       data.append("message", formData.message.trim());
 
-      const response = await fetch("https://hiverift.com/api/sendmail.php", {
-        method: "POST",
-        body: data,
-      });
+      const result = await submitContactForm(data);
 
-      const result = await response.json().catch(() => ({ status: false, message: "Server response error." }));
-
-      if (response.ok && (result.status === true || result.status === "success" || result.success === true)) {
+      if (result.success) {
         onClose();
-        navigate("/thank-you");
+        router.push("/thank-you");
         
         setFormData({
           name: "",

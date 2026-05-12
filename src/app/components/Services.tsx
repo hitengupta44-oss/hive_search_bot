@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -14,27 +16,27 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-react";
-import { Link } from "react-router";
+import Link from "next/link";
 
 const services = [
   {
-    id: "web-dev",
+    id: "web-development",
     icon: Globe,
     title: "Web Development",
-    description: "High-performance, scalable web ecosystems built for global brands.",
+    description: "High-performance, scalable web applications built for global brands using Next.js, React, and enterprise CMS platforms.",
     features: [
       "Custom Web Applications",
-      "Next.js & React Architectures",
+      "Next.js & React",
       "Enterprise CMS Integration",
     ],
     category: "Development",
     highlighted: true,
   },
   {
-    id: "mobile-dev",
+    id: "mobile-development",
     icon: Smartphone,
     title: "Mobile Apps",
-    description: "Native & Hybrid mobile experiences that redefine user engagement.",
+    description: "Native iOS & Android and React Native hybrid apps designed to redefine user engagement and drive app store growth.",
     features: [
       "iOS & Android Native",
       "React Native Solutions",
@@ -44,13 +46,13 @@ const services = [
     highlighted: false,
   },
   {
-    id: "software-dev",
+    id: "software-development",
     icon: Code,
     title: "Software Engineering",
-    description: "Complex ERP & CRM solutions tailored for automation and ROI.",
+    description: "Complex ERP & CRM solutions, legacy system modernisation, and custom workflow design tailored for automation and ROI.",
     features: [
       "Process Automation",
-      "Legacy Modernization",
+      "Legacy Modernisation",
       "Custom Workflow Design",
     ],
     category: "Development",
@@ -60,7 +62,7 @@ const services = [
     id: "ai-ml",
     icon: Brain,
     title: "AI & Machine Learning",
-    description: "Transforming raw data into predictive power and intelligent insights.",
+    description: "Transform raw data into predictive power with custom ML models, NLP systems, and intelligent analytics built for your business.",
     features: [
       "Predictive Analytics",
       "Custom ML Models",
@@ -73,7 +75,7 @@ const services = [
     id: "data-annotation",
     icon: Database,
     title: "Data Annotation",
-    description: "High-precision training data prepared for the next generation of AI.",
+    description: "High-precision training data with 99%+ label accuracy — image & video tagging, QA validation, and structured datasets for next-gen AI.",
     features: [
       "99%+ Label Accuracy",
       "Image & Video Tagging",
@@ -86,7 +88,7 @@ const services = [
     id: "digital-marketing",
     icon: TrendingUp,
     title: "Digital Marketing",
-    description: "Results-driven strategies that scale your brand visibility and ROI.",
+    description: "Results-driven SEO, high-ROI PPC campaigns, and growth marketing strategies that scale your brand visibility and revenue.",
     features: [
       "Data-backed SEO",
       "High-ROI PPC Campaigns",
@@ -108,7 +110,7 @@ export function Services() {
       : services.filter((service) => service.category === activeCategory);
 
   return (
-    <section id="services" className="py-24 bg-white relative overflow-hidden">
+    <section id="services" className="py-10 bg-white relative overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px] -z-10"></div>
       <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] -z-10"></div>
@@ -119,27 +121,26 @@ export function Services() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full mb-6">
-            <Sparkles size={14} className="text-emerald-500" />
-            <span className="text-[10px] font-black text-emerald-700 uppercase tracking-[0.2em]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-full mb-3">
+            <Sparkles size={12} className="text-emerald-500" />
+            <span className="text-[9px] font-black text-emerald-700 uppercase tracking-[0.2em]">
               Excellence in Execution
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 tracking-tighter leading-tight">
-            Our Core <br className="md:hidden" />
-            <span className="text-emerald-600">Digital Expertise</span>
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-2 tracking-tighter leading-tight">
+            Our <span className="text-emerald-600">Services</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto font-medium leading-relaxed">
-            From revolutionary AI models to high-conversion digital platforms, we engineer the solutions that define modern business performance.
+          <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto font-medium leading-relaxed">
+            End-to-end digital solutions — from web development and AI to marketing and mobile apps.
           </p>
         </motion.div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {categories.map((category) => (
             <button
               key={category}
@@ -169,25 +170,25 @@ export function Services() {
                   transition={{ duration: 0.4 }}
                   className="group"
                 >
-                  <div className="relative h-full p-10 rounded-[2.5rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="relative h-full p-6 rounded-[2rem] bg-white border border-gray-100 shadow-xl hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 group-hover:-translate-y-1">
                     {/* Icon Container */}
-                    <div className="mb-8">
-                      <div className="inline-flex p-5 bg-emerald-50 rounded-3xl text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
-                        <Icon size={32} strokeWidth={2.5} />
+                    <div className="mb-4">
+                      <div className="inline-flex p-4 bg-emerald-50 rounded-2xl text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                        <Icon size={24} strokeWidth={2.5} />
                       </div>
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-2xl font-black text-gray-900 mb-4 tracking-tight group-hover:text-emerald-600 transition-colors">
+                    <h3 className="text-xl font-black text-gray-900 mb-1 tracking-tight group-hover:text-emerald-600 transition-colors">
                       {service.title}
                     </h3>
 
-                    <p className="text-gray-500 font-medium leading-relaxed mb-8">
+                    <p className="text-xs text-gray-500 font-medium leading-relaxed mb-3">
                       {service.description}
                     </p>
 
                     {/* Feature Dots */}
-                    <ul className="space-y-4 mb-10">
+                    <ul className="space-y-2 mb-4">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-sm font-bold text-gray-700">
                           <CheckCircle2 size={18} className="text-emerald-500" strokeWidth={3} />
@@ -197,15 +198,15 @@ export function Services() {
                     </ul>
 
                     {/* Simple Bottom Link */}
-                    <Link to={`/services/${service.id}`} className="inline-flex items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest hover:gap-4 transition-all">
-                      Explore Service <ArrowRight size={16} />
+                    <Link href={`/services/${service.id}`} className="inline-flex items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest hover:gap-4 transition-all">
+                      Explore {service.title} <ArrowRight size={16} />
                     </Link>
                     
                     {/* Highlighted Badge */}
                     {service.highlighted && (
                       <div className="absolute top-8 right-8">
                         <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-wider rounded-lg border border-emerald-100">
-                          Primary
+                          Most Popular
                         </span>
                       </div>
                     )}
@@ -220,9 +221,9 @@ export function Services() {
         <motion.div
            initial={{ opacity: 0 }}
            whileInView={{ opacity: 1 }}
-          className="text-center mt-20"
+          className="text-center mt-8"
         >
-          <Link to="/services" className="px-10 py-5 bg-gray-900 text-white rounded-2xl font-black text-sm hover:bg-emerald-600 transition-all shadow-2xl flex-inline items-center gap-3">
+          <Link href="/services" className="px-10 py-5 bg-gray-900 text-white rounded-full font-black text-sm hover:bg-emerald-600 transition-all shadow-2xl flex-inline items-center gap-3">
             Explore All 20+ Solutions
           </Link>
         </motion.div>

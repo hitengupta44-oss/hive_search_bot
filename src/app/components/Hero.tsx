@@ -1,3 +1,5 @@
+"use client";
+
 
 import { motion } from "motion/react";
 import {
@@ -7,11 +9,14 @@ import {
   Users,
   Award,
   BarChart3,
-  Phone
+  Phone,
+  HelpCircle,
+  Target,
+  Trophy
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Link } from "react-router";
+import Link from "next/link";
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -32,23 +37,27 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-screen pt-28 pb-12 sm:pt-32 sm:pb-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-screen pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-24">
           {/* Left Side - Content (Order 2 on mobile, Order 1 on desktop) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-5 sm:space-y-6 lg:space-y-8 order-2 lg:order-1"
+            className="space-y-6 sm:space-y-8 lg:space-y-10 order-2 lg:order-1"
           >
-            {/* Badge */}
+            {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap gap-3"
             >
-              <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
-                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                WEB DEVELOPMENT & DIGITAL MARKETING
+              <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-xs sm:text-sm font-bold shadow-sm">
+                LIMITED TIME OFFER
+              </div>
+              <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-200 text-yellow-700 px-4 py-2 rounded-full text-xs sm:text-sm font-bold shadow-sm">
+                <Trophy className="w-4 h-4" />
+                FREE WEBSITE
               </div>
             </motion.div>
 
@@ -57,133 +66,160 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-gray-900 "
             >
-              Results-Driven{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500 block">
-                Digital Solutions
-              </span>{" "}
-              for Indian Businesses
+              Grow Your Business <br />
+              with <span className="text-emerald-600">Result-Driven</span> <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
+                Digital Marketing
+              </span>
             </motion.h1>
 
-            {/* Description */}
-            <motion.p
+            {/* Description / Subheadline */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl"
+              className="space-y-4"
             >
-              HiveRift helps startups, SMEs, and enterprises grow faster with professional websites, powerful digital marketing, and custom software — all built in India, for India.
-            </motion.p>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-bold leading-relaxed max-w-2xl">
+                Get a <span className="text-emerald-600 underline decoration-emerald-200 underline-offset-4">FREE</span> High-Converting Website <br className="hidden sm:block" />
+                with Our Digital Marketing Services
+              </p>
+
+              {/* Features Checklist */}
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
+                {[
+                  "No Hidden Cost",
+                  "SEO Optimized",
+                  "Mobile Friendly"
+                ].map((feature, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm sm:text-base font-bold text-gray-600">
+                    <CheckCircle2 className="text-emerald-500" size={18} />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             {/* CTA Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2 sm:pt-4"
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4 sm:pt-6"
             >
               <Button
                 asChild
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-6 text-lg font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 group w-full sm:w-auto"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-7 text-lg font-black rounded-full shadow-xl shadow-emerald-200 hover:shadow-2xl transition-all transform hover:scale-105 group w-full sm:w-auto"
               >
-                <Link to="/contact">
+                <Link href="/contact">
                   Get Free Consultation
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </Link>
               </Button>
 
-              <Link to="/case-studies" className="w-full sm:w-auto">
+              <Link href="/services" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-bold rounded-xl transition-all w-full sm:w-auto"
+                  className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-7 text-lg font-black rounded-full transition-all w-full sm:w-auto"
                 >
-                  View Our Work
+                  View Our Services
                 </Button>
               </Link>
             </motion.div>
-
-            {/* Hero Trust Bar - Redesigned for Premium Look */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
-              className="grid grid-cols-2 lg:grid-cols-4 items-center gap-3 sm:gap-4 pt-10"
-            >
-              {[
-                { value: "387+", label: "Happy Clients", icon: Users },
-                { value: "98%", label: "Success Rate", icon: Award },
-                { value: "5+", label: "Years Exp.", icon: TrendingUp },
-                { value: "10+", label: "Countries", icon: BarChart3 }
-              ].map((item, i) => (
-                <div 
-                  key={i} 
-                  className="flex items-center gap-2 sm:gap-3 bg-white/60 backdrop-blur-md border border-emerald-100 p-3 sm:px-5 sm:py-3 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-50 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                    <item.icon size={16} className="text-emerald-600 sm:w-5 sm:h-5" />
-                  </div>
-                  <div>
-                    <div className="text-base sm:text-xl font-black text-gray-900 leading-none mb-0.5">{item.value}</div>
-                    <div className="text-[8px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest">{item.label}</div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
 
-          {/* Right Side - Images & Stats (Order 1 on mobile, Order 2 on desktop) */}
+          {/* Right Side - Mockup Image (Order 1 on mobile, Order 2 on desktop) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative space-y-4 sm:space-y-5 lg:space-y-6 order-1 lg:order-2"
+            initial={{ opacity: 0, scale: 0.8, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative order-1 lg:order-2 flex items-center justify-center"
           >
-            {/* Top: Image Grid */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <motion.div className="relative h-[240px] lg:h-[320px] rounded-3xl overflow-hidden shadow-xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1758876202014-6b2062bed4e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzc3dvbWFuJTIwc21pbGluZyUyMG9mZmljZXxlbnwxfHx8fDE3NzA5MDE2NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Indian Business Leader"
-                  className="w-full h-full object-cover"
-                />
+            <div className="relative w-full max-w-2xl lg:max-w-3xl">
+              {/* Floating 100% Free Badge */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-10 -right-4 sm:-right-10 z-20"
+              >
+                <div className="w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-full shadow-2xl flex flex-col items-center justify-center p-4 text-center ring-8 ring-emerald-500/10 border border-emerald-100">
+                  <div className="text-xl sm:text-3xl font-black text-emerald-600">100%</div>
+                  <div className="text-[8px] sm:text-[10px] font-black text-gray-900 uppercase tracking-tighter leading-tight">
+                    FREE WEBSITE <br />
+                    <span className="text-gray-400 font-bold">With Selected Plans</span>
+                  </div>
+                </div>
               </motion.div>
-              <motion.div className="relative h-[240px] lg:h-[320px] rounded-3xl overflow-hidden shadow-xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1739298061707-cefee19941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9uJTIwb2ZmaWNlJTIwbWVldGluZ3xlbnwxfHx8fDE3NzA5MDE2NTd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="HiveRift Team"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </div>
 
-            {/* Stats Card */}
-            <motion.div
-              className="bg-gray-900 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none"></div>
-              
-              <div className="relative z-10 flex items-center justify-between gap-8">
-                <div className="space-y-8">
-                  <div className="space-y-1">
-                    <div className="text-5xl lg:text-7xl font-black text-white">125%</div>
-                    <div className="text-emerald-400 text-sm lg:text-lg font-bold uppercase tracking-widest">Reach Growth</div>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-5xl lg:text-7xl font-black text-white">280%</div>
-                    <div className="text-emerald-400 text-sm lg:text-lg font-bold uppercase tracking-widest">Presence Growth</div>
-                  </div>
-                </div>
-                <div className="flex-shrink-0">
-                  <div className="w-32 h-32 lg:w-48 lg:h-48 bg-white rounded-full flex flex-col items-center justify-center p-4 text-center ring-8 ring-emerald-500/20">
-                    <div className="text-4xl lg:text-6xl font-black text-gray-900">98%</div>
-                    <div className="text-[10px] lg:text-xs font-black text-emerald-600 uppercase tracking-tighter">Success Rate</div>
-                  </div>
-                </div>
+              <div className="relative rounded-[2rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(16,185,129,0.2)] border-8 border-white bg-white">
+                <ImageWithFallback
+                  src="/hero_hiverift_mockup.png"
+                  alt="Digital Marketing Mockup"
+                  className="w-full h-auto object-cover"
+                />
               </div>
-            </motion.div>
+
+              {/* Decorative Background Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-emerald-400/20 rounded-full blur-[100px] -z-10"></div>
+            </div>
           </motion.div>
         </div>
+
+        {/* Quick Answers Section (AEO Optimized) - Full Width Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-6 lg:mt-8 pb-8"
+        >
+          <div className="bg-slate-50/80 backdrop-blur-sm border border-slate-100 rounded-[2.5rem] p-5 sm:p-8 shadow-inner">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 tracking-tight">Quick Answers </h2>
+              <p className="text-sm sm:text-base text-gray-500 font-bold max-w-2xl mx-auto">Instant answers to the most common questions about our services.</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                {
+                  q: "What is digital marketing?",
+                  a: "Digital marketing is the process of promoting your business online using SEO, social media, and ads to generate leads and sales.",
+                  icon: HelpCircle
+                },
+                {
+                  q: "Why is a website important?",
+                  a: "A website builds trust, increases visibility, and helps convert visitors into paying customers for your business.",
+                  icon: TrendingUp
+                },
+                {
+                  q: "How can you help my business?",
+                  a: "We create a website, drive targeted traffic, and generate quality leads using proven strategies that deliver results.",
+                  icon: Users
+                },
+                {
+                  q: "How long does it take to see results?",
+                  a: "SEO takes 3-6 months for strong results, while paid ads can start generating leads and sales within days.",
+                  icon: Target
+                }
+              ].map((item, i) => (
+                <div key={i} className="bg-white border border-gray-100 p-5 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="w-10 h-10 bg-emerald-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+                      <item.icon size={20} className="text-emerald-600 group-hover:text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-base font-black text-gray-900 mb-1 leading-tight group-hover:text-emerald-600 transition-colors h-10 flex items-center">{item.q}</h3>
+                  <p className="text-xs text-gray-500 font-medium leading-relaxed mb-3 flex-grow">{item.a}</p>
+                  <Link href="/services" className="inline-flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] hover:gap-4 transition-all">
+                    Read More <ArrowRight size={12} />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

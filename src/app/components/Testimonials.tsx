@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useMotionValue } from "motion/react";
 import { Star, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";

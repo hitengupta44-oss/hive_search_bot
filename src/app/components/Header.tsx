@@ -1,15 +1,17 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Facebook, Instagram, Linkedin, Youtube, Phone, MessageSquare,Rocket } from "lucide-react";
 import { Button } from "./ui/button";
-import { Link, useLocation, useNavigate } from "react-router";
-import logoImage from "figma:asset/7fe77d5a1d2e3ea35cd92869801d704f0f2dbc95.png";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === "/";
+  const location = usePathname();
+  const router = useRouter();
+  const isHomePage = location === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,113 +22,136 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    if (!isHomePage) {
-      // Navigate to home first, then scroll
-      navigate("/");
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-    setIsMobileMenuOpen(false);
-  };
-
   const handleLogoClick = () => {
-    navigate("/");
+    router.push("/");
     setIsMobileMenuOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
-          : "bg-white/90 backdrop-blur-sm shadow-md"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-white/95 backdrop-blur-md shadow-lg"
+        : "bg-white/90 backdrop-blur-sm shadow-md"
+        }`}
     >
+      {/* Top Bar - Hides on Scroll & Hidden on Mobile */}
+      <div className={`bg-emerald-600 text-white transition-all duration-300 overflow-hidden hidden md:block ${isScrolled ? 'h-0' : 'h-12'}`}>
+        <div className="container mx-auto px-4 lg:px-8 h-full flex items-center justify-between text-[10px] md:text-xs font-bold">
+          {/* Left Side: Marketing Content (Swapped) */}
+          <div className="hidden md:flex items-center gap-2 text-emerald-50">
+            <Rocket size={14} /> 
+            <span className="opacity-90 font-medium bold">Helping Business grow online with smart strategies</span>
+          </div>
+
+          {/* Right Side: Social & Contact (Swapped) */}
+          <div className="flex items-center gap-4 md:gap-6">
+
+            {/* Follow Us Section */}
+            <div className="flex items-center gap-3 border-r border-white/20 pr-4 md:pr-6">
+              <span className="font-black text-white">Follow Us:</span>
+
+              <a href="https://www.facebook.com/profile.php?id=61576054306888" target="_blank" className="hover:scale-110 transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/hiverift.global/" target="_blank" className="hover:scale-110 transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/hiverift-softwares" target="_blank" className="hover:scale-110 transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" className="w-5 h-5" />
+              </a>
+              <a href="https://youtube.com" target="_blank" className="hover:scale-110 transition-transform">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" className="w-5 h-5" />
+              </a>
+            </div>
+
+            {/* Phone Section */}
+            <a
+              href="tel:+918814930229"
+              className="flex items-center gap-2 text-white hover:text-emerald-100 transition-colors"
+            >
+              <Phone size={14} className="text-white" />
+              <span className="font-black text-white">+91 8814930229</span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button onClick={handleLogoClick} className="flex items-center">
-            <img src={logoImage} alt="HiveRift" className="h-10 w-auto" />
+          <button onClick={handleLogoClick} className="flex items-center focus:outline-none border-none outline-none bg-transparent p-0 m-0 shadow-none">
+            <img src="/logo.png" alt="HiveRift" className="h-14 w-auto block border-none outline-none" />
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
+          <nav className="hidden lg:flex items-center space-x-3 xl:space-x-5">
             <Link
-              to="/"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Home
             </Link>
             <Link
-              to="/about"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/about"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               About
             </Link>
             <Link
-              to="/services"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/services"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Services
             </Link>
             <Link
-              to="/solutions"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/solutions"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Solutions
             </Link>
             <Link
-              to="/industries"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/industries"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Industries
             </Link>
             <Link
-              to="/case-studies"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/case-studies"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Case Studies
             </Link>
             <Link
-              to="/pricing"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/pricing"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Pricing
             </Link>
             <Link
-              to="/blog"
-              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap"
+              href="/blog"
+              className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
               Blog
             </Link>
             <div className="relative group py-2">
               <Link
-                to="/contact"
-                className="text-gray-700 group-hover:text-emerald-600 group-hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap flex items-center gap-1"
+                href="/contact"
+                className="text-gray-700 group-hover:text-emerald-600 group-hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap flex items-center gap-1 tracking-wide"
               >
                 Contact
                 <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
               </Link>
               <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-100 shadow-xl rounded-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-[100]">
-                <Link 
-                  to="/contact" 
-                  className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors"
+                <Link
+                  href="/contact"
+                  className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors tracking-wide"
                 >
                   Contact Us
                 </Link>
-                <Link 
-                  to="/careers" 
-                  className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors border-t border-gray-50"
+                <Link
+                  href="/careers"
+                  className="block px-6 py-3 text-sm font-bold text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors border-t border-gray-50 tracking-wide"
                 >
                   Careers
                 </Link>
@@ -134,13 +159,14 @@ export function Header() {
             </div>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-4">
             <Link
-              to="/contact"
-              className="inline-block bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition-all font-medium"
+              href="/contact"
+              className="flex items-center gap-2 bg-emerald-600 text-white px-5 py-2.5 rounded-full hover:bg-emerald-700 transition-all font-black text-xs shadow-lg shadow-emerald-200 whitespace-nowrap"
             >
-              Get Started
+              <MessageSquare size={14} />
+              <span>Get free consultation</span>
             </Link>
           </div>
 
@@ -171,7 +197,7 @@ export function Header() {
               ].map((link) => (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-gray-800 hover:text-emerald-600 transition-colors font-bold text-lg py-4 border-b border-gray-50 flex items-center justify-between group"
                 >
@@ -179,16 +205,16 @@ export function Header() {
                   <ChevronDown className="-rotate-90 text-gray-300 group-hover:text-emerald-500 transition-colors" size={16} />
                 </Link>
               ))}
-              
+
               <div className="pt-6 pb-4">
                 <Button
                   onClick={() => {
-                    navigate("/contact");
+                    router.push("/contact");
                     setIsMobileMenuOpen(false);
                   }}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white w-full py-6 rounded-2xl font-black text-lg shadow-lg"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white w-full py-5 rounded-full font-black text-lg shadow-lg"
                 >
-                  Get Started
+                  Get free consultation
                 </Button>
               </div>
             </nav>

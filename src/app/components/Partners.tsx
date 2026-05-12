@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Award, ChevronLeft, ChevronRight } from "lucide-react";
 import Slider from "react-slick";

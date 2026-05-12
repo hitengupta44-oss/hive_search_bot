@@ -1,8 +1,11 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { X, Send, User, Mail, Phone, Briefcase, Link as LinkIcon, FileText, Upload, CheckCircle2 } from "lucide-react";
 import Swal from "sweetalert2";
+import { submitJobApplication } from "@/app/actions/contactActions";
 
 interface JobApplyModalProps {
   isOpen: boolean;
@@ -33,7 +36,7 @@ export function JobApplyModal({ isOpen, onClose, jobTitle = "" }: JobApplyModalP
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const validatePhone = (phone: string) => /^[0-9]{10}$/.test(phone);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,16 +70,11 @@ export function JobApplyModal({ isOpen, onClose, jobTitle = "" }: JobApplyModalP
         data.append("resume", formData.resume);
       }
 
-      const response = await fetch("https://hiverift.com/submitfrom_api/api/v1/submitfrom", {
-        method: "POST",
-        body: data,
-      });
+      const result = await submitJobApplication(data);
 
-      const result = await response.json().catch(() => ({ success: false }));
-
-      if (response.ok && (result.success === true || result.status === "success")) {
+      if (result.success) {
         onClose();
-        navigate("/thank-you");
+        router.push("/thank-you");
         
         setFormData({
           name: "",

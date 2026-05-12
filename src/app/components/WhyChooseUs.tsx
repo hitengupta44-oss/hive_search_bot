@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Target, Shield, Zap, Award, Handshake, CircleDollarSign } from "lucide-react";
 

@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from "motion/react";
 import { ArrowRight, TrendingUp, Users, Award, Clock } from "lucide-react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const caseStudies = [
@@ -143,7 +145,7 @@ export function CaseStudies() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-br ${study.gradient} opacity-60 group-hover:opacity-50 transition-opacity duration-300`}></div>
-                    
+
                     {/* Category Badge */}
                     <div className="absolute top-3 left-3 md:top-4 md:left-4">
                       <span className="px-2.5 py-1 md:px-3 md:py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] md:text-xs font-semibold text-gray-700">
@@ -180,8 +182,8 @@ export function CaseStudies() {
                     </div>
 
                     {/* View Case Study Link */}
-                    <Link 
-                      to="/case-studies"
+                    <Link
+                      href="/case-studies"
                       className="flex items-center gap-2 text-emerald-600 font-semibold group-hover:gap-3 transition-all duration-300"
                     >
                       <span>View All Case Studies</span>
@@ -203,7 +205,7 @@ export function CaseStudies() {
           className="text-center mt-12"
         >
           <Link
-            to="/case-studies"
+            href="/case-studies"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             <span>View All Case Studies</span>

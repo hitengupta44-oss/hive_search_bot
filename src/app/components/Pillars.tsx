@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Users, Zap, Award } from "lucide-react";
 
