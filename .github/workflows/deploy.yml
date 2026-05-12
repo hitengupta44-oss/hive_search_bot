@@ -1,13 +1,18 @@
 name: Deploy to hiverift.com
-
 on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     runs-on: self-hosted
     steps:
       - name: Deploy
-        run: bash /home/hiveriftmain/deploy.sh
+        run: |
+          cd /home/hiveriftmain/nextapp
+          git pull origin main
+          npm install
+          rm -rf .next
+          npm run build
+          sudo /bin/pm2 restart hiverift
+          sudo /bin/pm2 save
