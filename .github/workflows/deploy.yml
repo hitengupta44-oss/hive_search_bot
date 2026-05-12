@@ -9,11 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 2222
-          script: bash /home/hiveriftmain/deploy.sh
+      - name: Trigger cPanel Deploy
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: cpanel hiveriftmain:${{ secrets.CPANEL_API_TOKEN }}" \
+            "https://69.170.178.68:2083/execute/Script/run?script=%2Fhome%2Fhiveriftmain%2Fdeploy.sh"
