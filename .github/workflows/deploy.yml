@@ -12,7 +12,7 @@ jobs:
           cd /home/hiveriftmain/nextapp
           git pull origin main
           npm install
-          rm -rf .next
+          sudo /bin/rm -rf .next
           npm run build
           sudo /bin/pm2 restart hiverift
           sudo /bin/pm2 save
