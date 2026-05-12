@@ -7,10 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Trigger cPanel Deploy
-        run: |
-          curl -s \
-            -H "Authorization: cpanel hiveriftmain:${{ secrets.CPANEL_API_TOKEN }}" \
-            "https://69.170.178.68:2083/execute/Script/run?script=%2Fhome%2Fhiveriftmain%2Fdeploy.sh"
+      - name: Deploy
+        run: bash /home/hiveriftmain/deploy.sh
