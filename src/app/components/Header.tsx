@@ -59,7 +59,7 @@ export function Header() {
               <a href="https://www.linkedin.com/company/hiverift-softwares" target="_blank" className="hover:scale-110 transition-transform">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" className="w-5 h-5" />
               </a>
-              <a href="https://youtube.com" target="_blank" className="hover:scale-110 transition-transform">
+              <a href="https://youtube.com/@hiveriftsoftwaresprivatelimite?si=BrcDEu0_4eVvgZbF" target="_blank" className="hover:scale-110 transition-transform">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" className="w-5 h-5" />
               </a>
             </div>
