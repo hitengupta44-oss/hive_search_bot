@@ -71,7 +71,7 @@ export function Hero() {
               Saif Your <span className="text-emerald-600">Business</span> <br />
               with <span className="text-emerald-600">Result-Driven</span> <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
-                Digital Marketing
+                Digital Marketing with HiveRift
               </span>
             </motion.h1>
 
