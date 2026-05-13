@@ -123,7 +123,7 @@ export function Pricing() {
                     <div className="flex flex-col items-center">
                       <div className="flex items-baseline justify-center gap-1">
                         <span className="text-xl font-bold text-emerald-600">₹</span>
-                        <span className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">{plan.price.toLocaleString()}</span>
+                        <span className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter">{plan.price.toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
