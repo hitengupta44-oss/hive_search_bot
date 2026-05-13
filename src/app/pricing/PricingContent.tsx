@@ -221,9 +221,8 @@ export default function PricingContent() {
 
                 <div className="mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-gray-900 font-black text-3xl">₹{pkg.total}</span>
+                    <span className="text-gray-900 font-black text-3xl">₹{pkg.price}</span>
                   </div>
-                  <p className="text-emerald-700 text-[10px] font-black mt-1 uppercase tracking-widest">+ Inclusive Prices</p>
                 </div>
 
                 <div className="space-y-4 mb-10">
@@ -262,8 +261,8 @@ export default function PricingContent() {
               <div key={idx} className="bg-white p-8 rounded-2xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all">
                 <h3 className="text-xl font-black text-gray-900 mb-4">{plan.name}</h3>
                 <div className="mb-6">
+                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Base Rate</div>
                   <div className="text-2xl font-black text-emerald-600">₹{plan.monthly}/mo</div>
-                  <div className="text-xs text-gray-400 mt-1 font-bold italic">Total incl. GST: ₹{plan.total}</div>
                 </div>
                 <div className="space-y-3 mb-8">
                   {plan.features.map((f, fi) => (
@@ -286,24 +285,19 @@ export default function PricingContent() {
             <h2 className="text-3xl font-black text-gray-900 mb-10 text-center">Other Services <span className="text-emerald-600">Quick Reference</span></h2>
             <div className="space-y-4">
               {/* Table Headers - Hidden on very small mobile */}
-              <div className="hidden md:grid grid-cols-3 border-b-2 border-slate-100 pb-4 mb-4">
+              <div className="hidden md:grid grid-cols-2 border-b-2 border-slate-100 pb-4 mb-4">
                 <div className="font-black text-gray-400 uppercase text-[10px] tracking-widest">Service</div>
-                <div className="font-black text-gray-400 uppercase text-[10px] tracking-widest">Starting Price</div>
-                <div className="font-black text-gray-400 uppercase text-[10px] tracking-widest text-right">Total (incl. GST)</div>
+                <div className="font-black text-gray-400 uppercase text-[10px] tracking-widest text-right">Starting Rate (Excl. GST)</div>
               </div>
 
               {/* Rows */}
               <div className="divide-y divide-slate-50">
                 {otherServices.map((s, idx) => (
-                  <div key={idx} className="py-4 md:grid md:grid-cols-3 items-center group hover:bg-emerald-50/30 transition-colors">
+                  <div key={idx} className="py-4 md:grid md:grid-cols-2 items-center group hover:bg-emerald-50/30 transition-colors">
                     <div className="font-bold text-gray-900 md:text-base text-sm mb-1 md:mb-0">{s.service}</div>
                     <div className="flex items-center justify-between md:contents">
-                      <div className="md:hidden text-[10px] font-black text-gray-300 uppercase tracking-widest">Starting</div>
-                      <div className="font-bold text-gray-500 text-sm">₹{s.base}</div>
-                    </div>
-                    <div className="flex items-center justify-between md:contents">
-                      <div className="md:hidden text-[10px] font-black text-gray-300 uppercase tracking-widest mt-1">Total (GST)</div>
-                      <div className="font-black text-emerald-600 text-right md:text-base text-sm mt-1 md:mt-0">₹{s.total}</div>
+                      <div className="md:hidden text-[10px] font-black text-gray-300 uppercase tracking-widest mt-1">Base Starting Rate</div>
+                      <div className="font-black text-emerald-600 text-right md:text-base text-sm mt-1 md:mt-0">₹{s.base}</div>
                     </div>
                   </div>
                 ))}

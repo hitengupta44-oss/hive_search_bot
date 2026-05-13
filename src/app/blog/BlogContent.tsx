@@ -101,10 +101,18 @@ const blogPosts = [
 
 export default function BlogContent() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = activeCategory === "All"
-    ? blogPosts
-    : blogPosts.filter(post => post.category === activeCategory);
+  // Dynamically extract categories from blogPosts
+  const dynamicCategories = ["All", ...Array.from(new Set(blogPosts.map(post => post.category)))];
+
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesCategory = activeCategory === "All" || post.category === activeCategory;
+    const matchesSearch = 
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      post.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -234,9 +242,14 @@ export default function BlogContent() {
                   <input
                     type="text"
                     placeholder="Search blog..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full bg-slate-50 border-none rounded-xl py-4 pl-6 pr-14 text-sm font-bold text-gray-900 focus:ring-2 focus:ring-emerald-500 transition-all"
                   />
-                  <button className="absolute right-2 w-10 h-10 bg-emerald-600 text-white rounded-lg flex items-center justify-center hover:bg-emerald-700 transition-colors">
+                  <button 
+                    className="absolute right-2 w-10 h-10 bg-emerald-600 text-white rounded-lg flex items-center justify-center hover:bg-emerald-700 transition-colors"
+                    onClick={() => {}} // Search is already live via onChange, button is decorative or can trigger focus
+                  >
                     <Search size={18} />
                   </button>
                 </div>
@@ -246,14 +259,13 @@ export default function BlogContent() {
               <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
                 <h3 className="text-lg font-black text-gray-900 mb-6 tracking-tight">Categories</h3>
                 <div className="space-y-2">
-                  {categories.map((cat, i) => (
+                  {dynamicCategories.map((cat, i) => (
                     <button
                       key={i}
-                      onClick={() => setActiveCategory(cat.name)}
-                      className={`w-full flex items-center justify-between p-3 rounded-xl transition-all group ${activeCategory === cat.name ? "bg-emerald-50 text-emerald-700" : "hover:bg-slate-50 text-gray-600"}`}
+                      onClick={() => setActiveCategory(cat)}
+                      className={`w-full flex items-center justify-between p-3 rounded-xl transition-all group ${activeCategory === cat ? "bg-emerald-50 text-emerald-700" : "hover:bg-slate-50 text-gray-600"}`}
                     >
-                      <span className="text-sm font-bold">{cat.name}</span>
-                      {/* <span className={`text-xs font-black px-2 py-1 rounded-md transition-all ${activeCategory === cat.name ? "bg-emerald-600 text-white" : "bg-slate-50 text-slate-400 group-hover:bg-emerald-100 group-hover:text-emerald-600"}`}>{cat.count}</span> */}
+                      <span className="text-sm font-bold">{cat}</span>
                     </button>
                   ))}
                 </div>

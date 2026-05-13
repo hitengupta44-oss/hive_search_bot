@@ -121,14 +121,9 @@ export function Pricing() {
                     <div className="absolute -right-4 -top-4 w-16 h-16 bg-emerald-200/20 rounded-full blur-2xl group-hover/price:scale-150 transition-transform duration-700"></div>
                     
                     <div className="flex flex-col items-center">
-                      {/* <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.25em] mb-3">Investment</p> */}
                       <div className="flex items-baseline justify-center gap-1">
                         <span className="text-xl font-bold text-emerald-600">₹</span>
-                        <span className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">{plan.total.toLocaleString()}</span>
-                      </div>
-                      <div className="mt-5 px-5 py-2 bg-emerald-600 text-white rounded-full shadow-lg shadow-emerald-500/20 inline-flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                        <p className="text-[9px] font-black uppercase tracking-[0.2em]">+ Inclusive Prices</p>
+                        <span className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">{plan.price.toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
@@ -230,7 +225,6 @@ export function Pricing() {
 
         {activeTab === "marketing" && (
            <div className="max-w-7xl mx-auto space-y-4">
-             {/* Desktop Table (RESTORING ALL ROWS) */}
              {/* Desktop Table */}
              <div className="hidden md:block overflow-x-auto pb-8 px-2">
                <table className="w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
@@ -240,8 +234,7 @@ export function Pricing() {
                         <th key={p.service} className="p-6 text-center group/th">
                           <div className="text-base font-black tracking-tight text-white mb-2">{p.service}</div>
                           <div className="inline-block px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
-                            <div className="text-emerald-400 text-sm font-black">₹{p.total}/mo</div>
-                            <div className="text-[7px] text-emerald-500/80 font-bold uppercase tracking-widest mt-0.5">+ Inclusive Prices</div>
+                            <div className="text-emerald-400 text-sm font-black">₹{p.price}/mo</div>
                           </div>
                         </th>
                       ))}
@@ -269,8 +262,8 @@ export function Pricing() {
                      <span className="bg-emerald-100 text-emerald-700 font-bold px-3 py-1 rounded-full text-xs">Growth</span>
                    </div>
                    <div className="mb-6">
-                       <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Total Price (Inc. GST)</p>
-                       <p className="text-2xl font-black text-emerald-700 tracking-tight">₹{item.total}/mo</p>
+                       <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Base Rate</p>
+                       <p className="text-2xl font-black text-emerald-700 tracking-tight">₹{item.price}/mo</p>
                    </div>
                    <div className="space-y-3 mb-6 bg-slate-50 p-4 rounded-xl border border-gray-100">
                      <div className="flex justify-between text-xs font-semibold"><span className="text-gray-400">SEO Audit:</span> <span className="text-gray-700">{item.seo}</span></div>
@@ -296,23 +289,23 @@ export function Pricing() {
                  <thead className="bg-emerald-600 text-white text-center">
                    <tr>
                      <th className="p-6 text-left font-bold uppercase tracking-widest text-[10px]">Solution Type</th>
-                     <th className="p-8 bg-emerald-700 font-bold uppercase tracking-widest text-xs">Total Starting <br/> <span className="text-[8px] tracking-[0.2em]">+ Inclusive Prices</span></th>
+                     <th className="p-8 bg-emerald-700 font-bold uppercase tracking-widest text-xs text-center">Starting Rate <br/> <span className="text-[8px] tracking-[0.2em]">(Excl. GST)</span></th>
                    </tr>
                  </thead>
                  <tbody className="text-sm text-center font-medium">
                    {[
-                     { type: "Business / Portfolio Website", total: "17,699" },
-                     { type: "E-commerce (Woo/Shopify)", total: "29,499" },
-                     { type: "Custom Web Application", total: "58,999" },
-                     { type: "Android OR iOS App (Single)", total: "70,799" },
-                     { type: "Android + iOS App (Cross)", total: "1,17,999" },
-                     { type: "Custom CRM / ERP System", total: "1,76,999" },
-                     { type: "AI Chatbot / Automation", total: "47,199" },
-                     { type: "Cloud Setup & DevOps", total: "23,599" }
+                     { type: "Business / Portfolio Website", price: "14,999" },
+                     { type: "E-commerce (Woo/Shopify)", price: "24,999" },
+                     { type: "Custom Web Application", price: "49,999" },
+                     { type: "Android OR iOS App (Single)", price: "59,999" },
+                     { type: "Android + iOS App (Cross)", price: "99,999" },
+                     { type: "Custom CRM / ERP System", price: "1,49,999" },
+                     { type: "AI Chatbot / Automation", price: "39,999" },
+                     { type: "Cloud Setup & DevOps", price: "19,999" }
                    ].map((row, idx) => (
                      <tr key={idx} className="border-b border-gray-50 transition-colors hover:bg-slate-50">
                        <td className="p-4 pl-6 text-left font-bold text-gray-900">{row.type}</td>
-                       <td className="p-4 font-bold text-emerald-700">₹{row.total}</td>
+                       <td className="p-4 font-bold text-emerald-700">₹{row.price}</td>
                      </tr>
                    ))}
                  </tbody>
@@ -322,25 +315,21 @@ export function Pricing() {
              {/* Mobile Cards (Full 8 items) */}
              <div className="md:hidden space-y-4 px-2">
                {[
-                 { type: "Business / Portfolio Website", price: "14,999", total: "17,699" },
-                 { type: "E-commerce (Woo/Shopify)", price: "24,999", total: "29,499" },
-                 { type: "Custom Web Application", price: "49,999", total: "58,999" },
-                 { type: "Android OR iOS App (Single)", price: "59,999", total: "70,799" },
-                 { type: "Android + iOS App (Cross)", price: "99,999", total: "1,17,999" },
-                 { type: "Custom CRM / ERP System", price: "1,49,999", total: "1,76,999" },
-                 { type: "AI Chatbot / Automation", price: "39,999", total: "47,199" },
-                 { type: "Cloud Setup & DevOps", price: "19,999", total: "23,599" }
+                 { type: "Business / Portfolio Website", price: "14,999" },
+                 { type: "E-commerce (Woo/Shopify)", price: "24,999" },
+                 { type: "Custom Web Application", price: "49,999" },
+                 { type: "Android OR iOS App (Single)", price: "59,999" },
+                 { type: "Android + iOS App (Cross)", price: "99,999" },
+                 { type: "Custom CRM / ERP System", price: "1,49,999" },
+                 { type: "AI Chatbot / Automation", price: "39,999" },
+                 { type: "Cloud Setup & DevOps", price: "19,999" }
                ].map((item, idx) => (
                  <div key={idx} className="bg-white rounded-xl p-5 shadow-lg border border-gray-100 flex flex-col gap-3">
                    <h3 className="text-sm font-bold text-gray-900 border-b border-gray-50 pb-2">{item.type}</h3>
                    <div className="flex justify-between items-end">
                      <div>
-                       <p className="text-[10px] text-gray-400 uppercase font-bold tracking-tight mb-1">Base Starting</p>
-                       <p className="text-xs font-bold text-gray-500 italic-none">₹{item.price}</p>
-                     </div>
-                     <div className="text-right">
-                       <p className="text-[10px] text-emerald-600 uppercase font-black tracking-tight mb-1">Total (Inc. GST)</p>
-                       <p className="text-lg font-black text-emerald-700 tracking-tighter italic-none">₹{item.total}</p>
+                       <p className="text-[10px] text-gray-400 uppercase font-bold tracking-tight mb-1">Base Starting Rate</p>
+                       <p className="text-xl font-black text-emerald-700 tracking-tighter">₹{item.price}</p>
                      </div>
                    </div>
                    <button onClick={() => handleSelectPlan(`Solution: ${item.type}`)} className="mt-2 py-3 bg-emerald-600 text-white rounded-lg text-xs font-bold shadow-md shadow-emerald-200 uppercase tracking-widest">Enquire Now</button>
