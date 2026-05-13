@@ -280,7 +280,7 @@ export default function AboutContent() {
                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   <ImageWithFallback
                     src={teamImage.src}
-              className="w-full h-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-900/40 to-transparent"></div>
                   <div className="absolute bottom-8 left-8">

@@ -228,8 +228,8 @@ export function LeadPopup({ isOpen, onClose, selectedPlan }: LeadPopupProps) {
                 <div className="relative">
                   <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2 flex justify-between">
                     <span>Project Details *</span>
-                    <span className={`text-xs ${formData.message.length >= 10 ? 'text-emerald-600' : 'text-gray-400'}`}>
-                      {formData.message.length} characters
+                    <span className={`text-[10px] font-bold ${formData.message.length >= 10 ? 'text-emerald-600' : 'text-gray-400'}`}>
+                      {formData.message.length} / 500 characters
                     </span>
                   </label>
                   <textarea
@@ -239,6 +239,7 @@ export function LeadPopup({ isOpen, onClose, selectedPlan }: LeadPopupProps) {
                     onChange={handleChange}
                     required
                     rows={4}
+                    maxLength={500}
                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all resize-none shadow-sm font-medium"
                     placeholder="Tell us about your project... (min 10 characters)"
                   />

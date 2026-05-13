@@ -146,8 +146,8 @@ export function Services() {
               key={category}
               onClick={() => setActiveCategory(category)}
               className={`px-8 py-3 rounded-2xl font-black text-sm transition-all duration-300 border ${activeCategory === category
-                  ? "bg-emerald-600 text-white border-emerald-600 shadow-xl shadow-emerald-600/20"
-                  : "bg-white text-gray-400 border-gray-100 hover:border-emerald-200 hover:text-emerald-600"
+                ? "bg-emerald-600 text-white border-emerald-600 shadow-xl shadow-emerald-600/20"
+                : "bg-white text-gray-400 border-gray-100 hover:border-emerald-200 hover:text-emerald-600"
                 }`}
             >
               {category}
@@ -201,12 +201,12 @@ export function Services() {
                     <Link href={`/services/${service.id}`} className="inline-flex items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest hover:gap-4 transition-all">
                       Explore {service.title} <ArrowRight size={16} />
                     </Link>
-                    
+
                     {/* Highlighted Badge */}
                     {service.highlighted && (
                       <div className="absolute top-8 right-8">
                         <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-wider rounded-lg border border-emerald-100">
-                          Most Popular
+                          Most Enquired
                         </span>
                       </div>
                     )}
@@ -219,8 +219,8 @@ export function Services() {
 
         {/* View All */}
         <motion.div
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           className="text-center mt-8"
         >
           <Link href="/services" className="px-10 py-5 bg-gray-900 text-white rounded-full font-black text-sm hover:bg-emerald-600 transition-all shadow-2xl flex-inline items-center gap-3">

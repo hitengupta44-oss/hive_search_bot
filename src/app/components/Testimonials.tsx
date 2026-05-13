@@ -70,7 +70,7 @@ export function Testimonials() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -118,7 +118,7 @@ export function Testimonials() {
         {/* Mobile View: 1 Card Slider with Drag Support */}
         <div className="lg:hidden relative">
           <div className="overflow-hidden">
-            <motion.div 
+            <motion.div
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               style={{ x: dragX }}
@@ -145,7 +145,7 @@ export function Testimonials() {
                       <div>
                         <div className="text-base font-bold text-gray-900">{item.name}</div>
                         <div className="text-xs font-bold text-emerald-600 uppercase flex items-center gap-1">
-                           {item.position} • {item.location}
+                          {item.position} • {item.location}
                         </div>
                       </div>
                     </div>
@@ -156,7 +156,7 @@ export function Testimonials() {
           </div>
           <div className="flex justify-center gap-2 mt-8">
             {testimonials.map((_, i) => (
-              <button 
+              <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`h-2 rounded-full transition-all ${currentIndex === i ? "w-8 bg-emerald-600" : "w-2 bg-emerald-200"}`}
@@ -166,7 +166,7 @@ export function Testimonials() {
         </div>
 
         {/* Trustpilot Widget */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

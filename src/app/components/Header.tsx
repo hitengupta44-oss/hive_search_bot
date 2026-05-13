@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Facebook, Instagram, Linkedin, Youtube, Phone, MessageSquare,Rocket } from "lucide-react";
+import { Menu, X, ChevronDown, Facebook, Instagram, Linkedin, Youtube, Phone, MessageSquare, Rocket } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -39,7 +39,7 @@ export function Header() {
         <div className="container mx-auto px-4 lg:px-8 h-full flex items-center justify-between text-[10px] md:text-xs font-bold">
           {/* Left Side: Marketing Content (Swapped) */}
           <div className="hidden md:flex items-center gap-2 text-emerald-50">
-            <Rocket size={14} /> 
+            <Rocket size={14} />
             <span className="opacity-90 font-medium bold">Helping Business grow online with smart strategies</span>
           </div>
 
@@ -80,7 +80,7 @@ export function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button onClick={handleLogoClick} className="flex items-center focus:outline-none border-none outline-none bg-transparent p-0 m-0 shadow-none">
+          <button onClick={handleLogoClick} className="flex items-center cursor-pointer focus:outline-none border-none outline-none bg-transparent p-0 m-0 shadow-none">
             <img src="/logo.png" alt="HiveRift" className="h-14 w-auto block border-none outline-none" />
           </button>
 
@@ -96,7 +96,7 @@ export function Header() {
               href="/about"
               className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
-              About 
+              About
             </Link>
             <Link
               href="/services"

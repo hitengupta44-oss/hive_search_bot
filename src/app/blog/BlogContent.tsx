@@ -32,8 +32,8 @@ const categories = [
   { name: "SEO" },
   { name: "Social Media Marketing" },
   { name: "Google Ads" },
-  { name: "Content Marketing"},
-  { name: "Business Growth"}
+  { name: "Content Marketing" },
+  { name: "Business Growth" }
 ];
 
 const blogPosts = [
@@ -315,7 +315,7 @@ export default function BlogContent() {
                 <div className="space-y-4 pt-2">
                   <div className="flex items-center gap-3 text-gray-900 font-black">
                     <Phone size={18} className="text-emerald-600" />
-                    <span className="text-sm">+91 98765 43210</span>
+                    <span className="text-sm">+91 8814930229</span>
                   </div>
                   <Link href="/contact" className="flex items-center justify-between text-xs font-black text-emerald-600 uppercase tracking-widest group">
                     <span>Schedule a Call</span>

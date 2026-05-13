@@ -48,13 +48,13 @@ export function MarketingStats() {
               <p className="text-gray-500 font-bold text-xs lg:text-sm leading-relaxed">
                 We help businesses of all sizes grow their revenue and online presence.
               </p>
-              
+
               <div className="flex items-center -space-x-4">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-sm">
-                    <img 
-                      src={`https://i.pravatar.cc/100?img=${i + 10}`} 
-                      alt="User" 
+                    <img
+                      src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                      alt="User"
                       className="w-full h-full object-cover"
                     />
                   </div>

@@ -286,11 +286,13 @@ export default function ContactContent() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[10px] md:text-xs font-black text-gray-400 uppercase tracking-widest ml-1 flex justify-between">
+                    <label htmlFor="message" className="text-[10px] md:text-xs font-black text-gray-400 uppercase tracking-widest ml-1 flex justify-between">
                       <span>Project Details *</span>
-                      <span className="text-[10px] text-emerald-600 tracking-normal">{formData.message.length} chars</span>
+                      <span className={`text-[10px] font-bold ${formData.message.length >= 10 ? 'text-emerald-600' : 'text-gray-400'}`}>
+                        {formData.message.length} / 500 characters
+                      </span>
                     </label>
-                    <textarea name="message" value={formData.message} onChange={handleChange} required rows={4} className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all shadow-sm font-bold resize-none" placeholder="Tell us more about your project goals..."></textarea>
+                    <textarea name="message" id="message" value={formData.message} onChange={handleChange} required rows={4} maxLength={500} className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all shadow-sm font-bold resize-none" placeholder="Tell us more about your project goals..."></textarea>
                   </div>
 
                   <button type="submit" disabled={isSubmitting} className="w-full py-4 md:py-5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl md:rounded-2xl font-black text-lg md:text-xl shadow-xl hover:shadow-emerald-500/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-3 disabled:opacity-50">

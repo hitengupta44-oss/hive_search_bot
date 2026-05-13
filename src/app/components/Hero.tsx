@@ -83,8 +83,8 @@ export function Hero() {
               className="space-y-4"
             >
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-bold leading-relaxed max-w-2xl">
-                Get a <span className="text-emerald-600 underline decoration-emerald-200 underline-offset-4">FREE</span> High-Converting Website <br className="hidden sm:block" />
-                with Our Digital Marketing Services
+                Get a <span className="text-emerald-600 underline decoration-emerald-200 underline-offset-4">free</span> high-converting website <br className="hidden sm:block" />
+                with Our digital marketing services
               </p>
 
               {/* Features Checklist */}
@@ -173,12 +173,30 @@ export function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-6 lg:mt-8 pb-8"
+          className="mt-2 md:mt-4 pb-8"
         >
-          <div className="bg-slate-50/80 backdrop-blur-sm border border-slate-100 rounded-[2.5rem] p-5 sm:p-8 shadow-inner">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-1 tracking-tight">Quick Answers </h2>
-              <p className="text-sm sm:text-base text-gray-500 font-bold max-w-2xl mx-auto">Instant answers to the most common questions about our services.</p>
+          <div className="py-6 md:py-10">
+            <div className="text-center mb-12">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight"
+              >
+                Quick <span className="text-emerald-600">Answers</span>
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-gray-500 max-w-2xl mx-auto font-medium text-base md:text-lg leading-relaxed"
+              >
+                Expert insights for instant clarity on your business growth and digital transformation.
+              </motion.p>
+              <div className="mt-4 flex justify-center">
+                <span className="text-[10px] text-emerald-600 font-black uppercase tracking-[0.3em] bg-emerald-50 px-4 py-1 rounded-full border border-emerald-100">AEO Optimized Knowledge Base</span>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -186,34 +204,44 @@ export function Hero() {
                 {
                   q: "What is digital marketing?",
                   a: "Digital marketing is the process of promoting your business online using SEO, social media, and ads to generate leads and sales.",
-                  icon: HelpCircle
+                  icon: HelpCircle,
+                  href: "/q/what-is-digital-marketing"
                 },
                 {
                   q: "Why is a website important?",
                   a: "A website builds trust, increases visibility, and helps convert visitors into paying customers for your business.",
-                  icon: TrendingUp
+                  icon: TrendingUp,
+                  href: "/q/why-website-important"
                 },
                 {
                   q: "How can you help my business?",
                   a: "We create a website, drive targeted traffic, and generate quality leads using proven strategies that deliver results.",
-                  icon: Users
+                  icon: Users,
+                  href: "/q/how-can-we-help"
                 },
                 {
                   q: "How long does it take to see results?",
                   a: "SEO takes 3-6 months for strong results, while paid ads can start generating leads and sales within days.",
-                  icon: Target
+                  icon: Target,
+                  href: "/q/results-timeline"
                 }
               ].map((item, i) => (
-                <div key={i} className="bg-white border border-gray-100 p-5 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="w-10 h-10 bg-emerald-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
-                      <item.icon size={20} className="text-emerald-600 group-hover:text-white" />
-                    </div>
+                <div key={i} className="bg-white border border-gray-100 p-8 rounded-[2rem] shadow-sm hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 group flex flex-col h-full relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50/50 rounded-bl-[4rem] -mr-8 -mt-8 group-hover:bg-emerald-100 transition-colors duration-500"></div>
+                  
+                  <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                    <item.icon size={28} />
                   </div>
-                  <h3 className="text-base font-black text-gray-900 mb-1 leading-tight group-hover:text-emerald-600 transition-colors h-10 flex items-center">{item.q}</h3>
-                  <p className="text-xs text-gray-500 font-medium leading-relaxed mb-3 flex-grow">{item.a}</p>
-                  <Link href="/services" className="inline-flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] hover:gap-4 transition-all">
-                    Read More <ArrowRight size={12} />
+
+                  <h3 className="text-xl font-black text-gray-900 mb-3 leading-tight group-hover:text-emerald-600 transition-colors">{item.q}</h3>
+                  <p className="text-sm text-gray-600 font-medium leading-relaxed mb-6 flex-grow">{item.a}</p>
+
+                  <Link 
+                    href={item.href} 
+                    className="inline-flex items-center gap-2 text-xs font-black text-emerald-600 uppercase tracking-widest group/link mt-auto"
+                  >
+                    Read More 
+                    <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               ))}

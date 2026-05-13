@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone, Linkedin, Twitter, Facebook, Instagram, Youtube, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
+
 export function Footer() {
   return (
     <footer id="contact" className="bg-[#0a0a0a] text-gray-300 border-t border-gray-900">
@@ -99,9 +100,9 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <Mail size={16} className="text-emerald-500 shrink-0" />
                 <div className="text-[12px] space-y-1">
-                <a href="mailto:info@hiverift.com" className="text-[12px] block hover:text-white transition-colors ">info@hiverift.com</a>
-                <a href="mailto:support@hiverift.com" className="text-[12px] block hover:text-white transition-colors">support@hiverift.com</a>
-              </div>
+                  <a href="mailto:info@hiverift.com" className="text-[12px] block hover:text-white transition-colors ">info@hiverift.com</a>
+                  <a href="mailto:support@hiverift.com" className="text-[12px] block hover:text-white transition-colors">support@hiverift.com</a>
+                </div>
               </div>
             </div>
           </div>
@@ -113,20 +114,23 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 py-8  border-gray-900">
 
           {/* 1. Branding */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xs">
+          <div className="flex flex-col items-center cursor-pointer lg:items-start text-center lg:text-left max-w-xs">
+            <Link href="/">
             <img
+            
               src="/logo.png"
               alt="HiveRift"
               className="h-10 w-auto mb-2"
             />
+            </Link>
             <div className="mt-2 flex flex-wrap gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
               <Link href="/terms" className="hover:text-emerald-500 transition-colors">Terms of Service</Link>
               <span className="text-gray-800">•</span>
               <Link href="/privacy" className="hover:text-emerald-500 transition-colors">Privacy Policy</Link>
             </div>
-            <p className="text-[10px] text-gray-600 leading-snug mt-4">
-              © 2026 HiveRift. Global Software Engineering Agency. <br />
-              Operated by KhatuShyam Technologies. New Delhi.
+            <p className="text-[12px] text-white font-bold  leading-snug mt-4">
+              © 2026 HiveRift <br />
+              Operated by KhatuShyam Technologies, New Delhi
             </p>
           </div>
 

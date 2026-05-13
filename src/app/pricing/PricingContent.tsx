@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "motion/react";
-import { 
-  Check, 
-  Sparkles, 
-  Zap, 
+import {
+  Check,
+  Sparkles,
+  Zap,
   HelpCircle,
   ArrowRight,
   Plus,
@@ -19,9 +19,9 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 const websitePackages = [
   {
     name: "Starter",
-    price: "14,999",
-    gst: "2,700",
-    total: "17,699",
+    price: "44,999",
+    gst: "8,099",
+    total: "53,098",
     tagline: "Perfect for Small Businesses",
     features: [
       "Up to 5 Pages",
@@ -38,9 +38,9 @@ const websitePackages = [
   },
   {
     name: "Business Pro",
-    price: "34,999",
-    gst: "6,300",
-    total: "41,299",
+    price: "59,999",
+    gst: "10,799",
+    total: "70,798",
     tagline: "The Best Value for Growth",
     features: [
       "Up to 15 Pages",
@@ -59,9 +59,9 @@ const websitePackages = [
   },
   {
     name: "Growth",
-    price: "59,999",
-    gst: "10,800",
-    total: "70,799",
+    price: "149,999",
+    gst: "26,999",
+    total: "176,998",
     tagline: "For Established Enterprises",
     features: [
       "Up to 30 Pages",
@@ -126,10 +126,10 @@ const faqs = [
 function FAQItem({ q, a, defaultOpen = false }: { q: string, a: string, defaultOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   return (
-    <div 
+    <div
       className={`bg-white rounded-2xl shadow-sm border transition-all duration-300 ${isOpen ? "border-emerald-500 shadow-emerald-100 shadow-lg" : "border-gray-100"}`}
     >
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-6 md:p-8 text-left"
       >
@@ -138,7 +138,7 @@ function FAQItem({ q, a, defaultOpen = false }: { q: string, a: string, defaultO
         </h4>
         <ChevronDown className={`text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180 text-emerald-600" : ""}`} />
       </button>
-      <motion.div 
+      <motion.div
         initial={false}
         animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
         className="overflow-hidden"
@@ -155,7 +155,7 @@ export default function PricingContent() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-[400px] md:h-[500px] overflow-hidden mt-20 md:mt-32 flex items-center">
         <div className="absolute inset-0">
@@ -219,11 +219,11 @@ export default function PricingContent() {
                   <p className="text-gray-500 font-medium text-sm">{pkg.tagline}</p>
                 </div>
 
-                <div className="mb-8">
+                <div className="mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-gray-900 font-black text-4xl">₹{pkg.price}</span>
+                    <span className="text-gray-900 font-black text-3xl">₹{pkg.total}</span>
                   </div>
-                  <p className="text-emerald-700 text-sm font-bold mt-2">+ GST ₹{pkg.gst}</p>
+                  <p className="text-emerald-700 text-[10px] font-black mt-1 uppercase tracking-widest">+ Inclusive Prices</p>
                 </div>
 
                 <div className="space-y-4 mb-10">
@@ -237,7 +237,7 @@ export default function PricingContent() {
                   ))}
                 </div>
 
-                <Link 
+                <Link
                   href="/contact"
                   className={`w-full py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 ${pkg.highlight ? "bg-emerald-600 text-white shadow-emerald-200 shadow-xl hover:bg-emerald-700" : "bg-slate-50 text-gray-900 hover:bg-slate-100"}`}
                 >

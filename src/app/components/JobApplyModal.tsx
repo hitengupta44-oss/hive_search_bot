@@ -225,9 +225,13 @@ export function JobApplyModal({ isOpen, onClose, jobTitle = "" }: JobApplyModalP
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Cover Letter *</label>
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1 flex justify-between">
+                      <span>Cover Letter *</span>
+                      <span className="text-[10px] font-bold text-emerald-600 tracking-normal">{formData.coverLetter.length} / 500 characters</span>
+                    </label>
                     <textarea 
                       rows={2} required
+                      maxLength={500}
                       value={formData.coverLetter}
                       onChange={(e) => setFormData({...formData, coverLetter: e.target.value})}
                       className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-emerald-500 transition-all outline-none font-bold resize-none placeholder:font-normal text-sm" 
