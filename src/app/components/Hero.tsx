@@ -240,7 +240,7 @@ export function Hero() {
                     href={item.href} 
                     className="inline-flex items-center gap-2 text-xs font-black text-emerald-600 uppercase tracking-widest group/link mt-auto"
                   >
-                    Read More1 
+                    Read More
                     <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
