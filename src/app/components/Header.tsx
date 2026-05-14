@@ -90,7 +90,7 @@ export function Header() {
               href="/"
               className="text-gray-700 hover:text-emerald-600 hover:underline underline-offset-8 decoration-2 decoration-emerald-500/30 transition-all font-bold text-sm xl:text-base whitespace-nowrap tracking-wide"
             >
-              Home 12
+              Saif
             </Link>
             <Link
               href="/about"
