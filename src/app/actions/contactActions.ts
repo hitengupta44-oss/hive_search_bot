@@ -19,6 +19,7 @@ export async function submitContactForm(formData: FormData) {
 
 export async function submitJobApplication(formData: FormData) {
   try {
+   
     const response = await fetch("https://hiverift.com/submitfrom_api/api/v1/submitfrom", {
       method: "POST",
       body: formData,

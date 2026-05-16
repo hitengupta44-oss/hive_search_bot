@@ -173,8 +173,7 @@ export default function ContactContent() {
               Let's Build Something <span className="text-emerald-400">Great Together</span>
             </h1>
             <p className="text-lg md:text-2xl text-white/90 leading-relaxed max-w-3xl font-medium">
-              Tell us about your project and we will come back to you within 24 hours with a clear plan and honest pricing. No sales pressure — just a straight conversation about what you need.
-            </p>
+              Share your project with us, and we’ll get back within 24 hours with a clear strategy and transparent pricing. No pressure, just honest guidance.            </p>
           </motion.div>
         </div>
       </section>

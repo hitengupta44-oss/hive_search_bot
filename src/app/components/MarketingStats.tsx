@@ -5,28 +5,28 @@ import { Users, Star, Award, Briefcase } from "lucide-react";
 
 const stats = [
   {
-    label: "Projects Completed",
+    label: "Projects Delivered",
     value: "250+",
     icon: Briefcase,
     color: "text-purple-600",
     bgColor: "bg-purple-50"
   },
   {
-    label: "Happy Clients",
+    label: "Global Clients",
     value: "150+",
     icon: Users,
     color: "text-blue-600",
     bgColor: "bg-blue-50"
   },
   {
-    label: "Client Rating",
+    label: "Customer Satisfaction",
     value: "4.9/5",
     icon: Star,
     color: "text-orange-600",
     bgColor: "bg-orange-50"
   },
   {
-    label: "Years of Experience",
+    label: "Years of Excellence",
     value: "5+",
     icon: Award,
     color: "text-red-600",
@@ -43,10 +43,10 @@ export function MarketingStats() {
             {/* Left side: Trusted info */}
             <div className="lg:col-span-2 space-y-3">
               <h2 className="text-2xl lg:text-3xl font-black text-gray-900 leading-tight">
-                Trusted by 200+ Businesses
+                Trusted by Brands Worldwide
               </h2>
               <p className="text-gray-500 font-bold text-xs lg:text-sm leading-relaxed">
-                We help businesses of all sizes grow their revenue and online presence.
+                We combine strategy, creativity, and technology to help businesses scale faster with impactful digital solutions and performance-driven results.
               </p>
 
               <div className="flex items-center -space-x-4">

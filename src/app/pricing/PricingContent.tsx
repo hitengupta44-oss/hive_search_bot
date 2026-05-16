@@ -184,8 +184,7 @@ export default function PricingContent() {
               Honest Pricing. <span className="text-emerald-400">No Surprises.</span>
             </h1>
             <p className="text-lg md:text-2xl text-white/90 leading-relaxed max-w-3xl font-medium">
-              All prices are in Indian Rupees. GST at 18% is shown separately on every invoice — exactly as per Indian GST law. No hidden costs, just straight talk.
-            </p>
+              All prices are listed in INR. An 18% GST is added separately to every invoice as per Indian tax regulations, with complete transparency and no hidden charges.            </p>
           </motion.div>
         </div>
       </section>

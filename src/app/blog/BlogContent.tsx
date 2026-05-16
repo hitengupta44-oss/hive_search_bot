@@ -323,7 +323,7 @@ export default function BlogContent() {
                 </div>
                 <p className="text-xs font-bold text-gray-500 leading-relaxed">
                   Our experts are here to help you grow your business.
-                </p>
+                </p> 
                 <div className="space-y-4 pt-2">
                   <div className="flex items-center gap-3 text-gray-900 font-black">
                     <Phone size={18} className="text-emerald-600" />
