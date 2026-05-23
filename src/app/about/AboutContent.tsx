@@ -35,7 +35,7 @@ export default function AboutContent() {
               Digital Excellence
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[1.2]">
-              About HiveRift <span className="text-emerald-500 underline decoration-emerald-500/30 underline-offset-8">Building Digital Excellence</span> Since 2019
+              About HiveRift <span className="text-emerald-500  decoration-emerald-500/30 underline-offset-8">Building Digital Excellence</span> Since 2019
             </h1>
             <p className="text-lg md:text-2xl text-white/95 leading-relaxed max-w-4xl font-medium">
               We are a team of developers, designers, marketers, and strategists united by one goal: to help businesses across India and the world grow through the power of technology.
@@ -101,7 +101,7 @@ export default function AboutContent() {
                     That gap is exactly what HiveRift was built to fill. Today, operating under the unified identity of <span className="text-emerald-600 font-bold">HiveRift | KhatuShyam Technologies</span>, we are a full-service digital agency with <span className="text-gray-900 font-bold">50+ team members</span>, offices in New Delhi, USA, and Canada, and a client base spanning 10+ countries.
                   </p>
                   <p className="text-xl text-gray-900 font-bold border-l-4 border-emerald-500 pl-6 py-2 bg-emerald-50/50 rounded-r-xl">
-                    We’re more than a service provider, we’re your partner in <span className="text-emerald-600 underline decoration-emerald-500/30 underline-offset-4">digital growth partner</span> 
+                    We’re more than a service provider, we’re your partner in <span className="text-emerald-600  decoration-emerald-500/30 underline-offset-4">digital growth partner</span> 
                   </p>
                 </div>
               </motion.div>

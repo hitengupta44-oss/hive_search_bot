@@ -83,7 +83,7 @@ export function Hero() {
               className="space-y-4"
             >
               <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-bold leading-relaxed max-w-2xl">
-                Get a <span className="text-emerald-600 underline decoration-emerald-200 underline-offset-4">High-Converting</span> website <br className="hidden sm:block" />
+                Get a <span className="text-emerald-600  decoration-emerald-200 underline-offset-4">High-Converting</span> website <br className="hidden sm:block" />
                 with result driven marketing.
               </p>
 
@@ -115,7 +115,7 @@ export function Hero() {
               >
                 <Link href="/contact">
                   Get Free Consultation
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                  <ArrowRight className="mt-1 group-hover:translate-x-1 transition-transform" size={20} />
                 </Link>
               </Button>
 
@@ -140,37 +140,43 @@ export function Hero() {
             <div className="relative w-full max-w-2xl lg:max-w-3xl">
               {/* Floating 100% Free Badge */}
               <motion.div
-                animate={{ y: [0, -12, 0] }}
+                animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 right-2 sm:-top-12 sm:right-8 lg:-top-16 lg:right-16 z-30"
+                className="absolute -top-10 -right-2 sm:-top-16 sm:-right-4 lg:-top-20 lg:-right-6 z-30"
               >
                 <div className="relative group">
-                  {/* Outer Glow / Pulse Effect */}
+                  {/* Outer Glow */}
                   <div className="absolute inset-0 bg-emerald-400/20 rounded-full blur-2xl group-hover:bg-emerald-400/40 transition-all duration-700 animate-pulse"></div>
-                  
-                  {/* Badge Body - Glassmorphism style */}
-                  <div className="relative w-36 h-36 sm:w-56 sm:h-56 bg-white/95 backdrop-blur-xl rounded-full shadow-[0_32px_64px_-16px_rgba(16,185,129,0.4)] flex flex-col items-center justify-center p-6 text-center border-2 border-emerald-50 ring-8 ring-white/50">
-                    
-                    {/* Rotating Dashed Ring */}
+
+                  {/* Badge */}
+                  <div className="relative w-32 h-32 sm:w-52 sm:h-52 bg-white/95 backdrop-blur-xl rounded-full shadow-[0_32px_64px_-16px_rgba(16,185,129,0.4)] flex flex-col items-center justify-center p-4 text-center border-2 border-emerald-50 ring-8 ring-white/50">
+
+                    {/* Rotating Ring */}
                     <div className="absolute inset-3 border border-dashed border-emerald-200 rounded-full animate-[spin_15s_linear_infinite]"></div>
-                    
+
                     {/* Content */}
-                    <div className="relative z-10 space-y-1 sm:space-y-3">
+                    <div className="relative z-10 space-y-1 sm:space-y-2">
+
                       <div className="flex flex-col items-center">
-                        <span className="text-2xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-emerald-600 to-teal-600 leading-none">100%</span>
-                        <span className="text-xl sm:text-4xl font-black text-emerald-600 leading-none">FREE</span>
+                        <span className="text-xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-emerald-600 to-teal-600 leading-none">
+                          100%
+                        </span>
+                        <span className="text-lg sm:text-3xl font-black text-emerald-600 leading-none">
+                          FREE
+                        </span>
                       </div>
-                      
-                      <div className="space-y-0.5 sm:space-y-1">
-                        <div className="text-[10px] sm:text-base font-black text-gray-900 uppercase tracking-tight leading-tight max-w-[100px] sm:max-w-[160px] mx-auto">
+
+                      <div className="space-y-0.5">
+                        <div className="text-[9px] sm:text-sm font-black text-gray-900 uppercase tracking-tight leading-tight max-w-[90px] sm:max-w-[140px] mx-auto">
                           BUSINESS CONSULTATION
                         </div>
-                        
-                        <div className="text-[8px] sm:text-xs font-bold text-gray-500 leading-tight">
+
+                        <div className="text-[7px] sm:text-[11px] font-bold text-gray-500 leading-tight">
                           To Help You Grow Online
                         </div>
                       </div>
-                    </div>  
+
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -199,7 +205,7 @@ export function Hero() {
         >
           <div className="py-6 md:py-10">
             <div className="text-center mb-12">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -207,7 +213,7 @@ export function Hero() {
               >
                 Quick <span className="text-emerald-600">Answers</span>
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -250,7 +256,7 @@ export function Hero() {
               ].map((item, i) => (
                 <div key={i} className="bg-white border border-gray-100 p-8 rounded-[2rem] shadow-sm hover:shadow-2xl hover:border-emerald-200 transition-all duration-500 group flex flex-col h-full relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50/50 rounded-bl-[4rem] -mr-8 -mt-8 group-hover:bg-emerald-100 transition-colors duration-500"></div>
-                  
+
                   <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-sm">
                     <item.icon size={28} />
                   </div>
@@ -258,8 +264,8 @@ export function Hero() {
                   <h3 className="text-xl font-black text-gray-900 mb-3 leading-tight group-hover:text-emerald-600 transition-colors">{item.q}</h3>
                   <p className="text-sm text-gray-600 font-medium leading-relaxed mb-6 flex-grow">{item.a}</p>
 
-                  <Link 
-                    href={item.href} 
+                  <Link
+                    href={item.href}
                     className="inline-flex items-center gap-2 text-xs font-black text-emerald-600 uppercase tracking-widest group/link mt-auto"
                   >
                     Read More

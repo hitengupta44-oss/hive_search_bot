@@ -135,9 +135,9 @@ export default function ServicesContent() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 rounded-full mb-8 text-emerald-400">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/30 backdrop-blur-md border border-emerald-500/30 rounded-full mt-4 text-emerald-400">
               <Sparkles size={14} />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em]">
+              <span className="text-sm font-semibold text-white tracking-wide uppercase">
                 Explore Our Ecosystem
               </span>
             </div>
@@ -151,8 +151,8 @@ export default function ServicesContent() {
               Comprehensive <br/>
               <span className="relative inline-block mt-2">
                 <span className="text-emerald-500">Digital Solutions</span>
-                <span className="absolute -bottom-2 left-0 w-full h-3 bg-emerald-500/20 rounded-full -z-10"></span>
-                <span className="absolute -bottom-1 left-0 w-1/2 h-1 bg-emerald-500 rounded-full"></span>
+                {/* <span className="absolute -bottom-2 left-0 w-full h-3 bg-emerald-500/20 rounded-full -z-10"></span> */}
+                {/* <span className="absolute -bottom-1 left-0 w-1/2 h-1 bg-emerald-500 rounded-full"></span> */}
               </span>
             </motion.h1>
 
@@ -168,7 +168,7 @@ export default function ServicesContent() {
         </div>
       </section>
 
-      {/* Services List Section */}
+      {/* Services List Section */} 
       <section className="py-24 relative">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Category Filters */}

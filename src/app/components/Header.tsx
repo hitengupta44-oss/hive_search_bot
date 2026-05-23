@@ -163,10 +163,10 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/contact"
-              className="flex items-center gap-2 bg-emerald-600 text-white px-5 py-2.5 rounded-full hover:bg-emerald-700 transition-all font-black text-xs shadow-lg shadow-emerald-200 whitespace-nowrap"
+              className="flex items-center gap-2 bg-emerald-600 text-white px-2 py-3 rounded-full hover:bg-emerald-700 transition-all font-black text-xs shadow-lg shadow-emerald-200 whitespace-nowrap"
             >
               <MessageSquare size={14} />
-              <span>Get free consultation</span>
+              <span className="font-black tracking-tight">Get free consultation</span>
             </Link>
           </div>
 

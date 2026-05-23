@@ -157,7 +157,7 @@ export default function IndustriesContent() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 rounded-full mt-5 ">
               <Zap size={16} className="text-emerald-400" />
               <span className="text-sm font-black text-emerald-400 tracking-widest uppercase">
                 Industry-Specific Solutions
