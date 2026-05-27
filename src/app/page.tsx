@@ -13,6 +13,7 @@ import { EnhancedIndustries as IndustriesSlider } from "@/app/components/Enhance
 import { MarketingServices } from "@/app/components/MarketingServices";
 import { MarketingStats } from "@/app/components/MarketingStats";
 import { WorkProcess } from "@/app/components/WorkProcess";
+import { HiveSearchBot } from "@/app/components/HiveSearchBot";
 
 export const metadata = {
   title: "HiveRift - Digital Excellence | Web, Mobile, AI Solutions",
@@ -24,19 +25,19 @@ export default function () {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <Services />
+      <div id="services"><Services /></div>
       {/* <MarketingServices /> */}
-      <MarketingStats />
-      <WorkProcess />
-
-      <Pricing />
+      <div id="stats"><MarketingStats /></div>
+      <div id="work-process"><WorkProcess /></div>
+      <div id="pricing"><Pricing /></div>
       <Pillars />
-      <IndustriesSlider />
-      <CaseStudies />
-      <Testimonials />
-      <FAQ />
-      <Partners />
-      <CTASection />
+      <div id="industries"><IndustriesSlider /></div>
+      <div id="case-studies"><CaseStudies /></div>
+      <div id="testimonials"><Testimonials /></div>
+      <div id="faq"><FAQ /></div>
+      <div id="partners"><Partners /></div>
+      <HiveSearchBot />
+      <div id="cta"><CTASection /></div>
       <Footer />
     </div>
   );
