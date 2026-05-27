@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output:"export",
   allowedDevOrigins: [
     "*.trycloudflare.com",
     "*.loca.lt",
@@ -21,4 +20,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
