@@ -48,6 +48,7 @@ export function HiveSearchBot() {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const [detectedSection, setDetectedSection] = useState<{ sectionId: string; label: string } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -72,13 +73,14 @@ export function HiveSearchBot() {
       const res = await fetch("/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: searchQuery }),
+        body: JSON.stringify({ query: searchQuery, session_id: sessionId }),
       });
       const data = await res.json();
       if (!res.ok || data.error) {
         setError(data.error || "Something went wrong. Please try again.");
       } else {
         setAnswer(data.answer);
+        if (data.session_id) setSessionId(data.session_id);
         setDetectedSection(detectSection(data.answer));
       }
     } catch {
@@ -124,7 +126,7 @@ export function HiveSearchBot() {
               className="flex-1 bg-transparent outline-none text-gray-800 font-medium placeholder:text-gray-400 text-base py-2 px-2"
             />
             {query && (
-              <button onClick={() => { setQuery(""); setAnswer(""); setError(""); setDetectedSection(null); }} className="text-gray-400 hover:text-gray-600 px-2">
+              <button onClick={() => { setQuery(""); setAnswer(""); setError(""); setDetectedSection(null); setSessionId(null); }} className="text-gray-400 hover:text-gray-600 px-2">
                 <X size={18} />
               </button>
             )}
